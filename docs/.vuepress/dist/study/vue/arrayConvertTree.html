@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>🔖 Array 转 Tree(平铺结构转树形层级结构) | VuePress</title>
+    <meta name="generator" content="VuePress 1.8.0">
+    
+    <meta name="description" content="Vue-powered Static Site Generator">
+    
+    <link rel="preload" href="/vuepress/assets/css/0.styles.909948e8.css" as="style"><link rel="preload" href="/vuepress/assets/js/app.5b875f68.js" as="script"><link rel="preload" href="/vuepress/assets/js/2.85ec67f1.js" as="script"><link rel="preload" href="/vuepress/assets/js/8.2184aefc.js" as="script"><link rel="prefetch" href="/vuepress/assets/js/10.c03860ad.js"><link rel="prefetch" href="/vuepress/assets/js/11.93a04c7c.js"><link rel="prefetch" href="/vuepress/assets/js/12.7ffa75e6.js"><link rel="prefetch" href="/vuepress/assets/js/13.918c7a82.js"><link rel="prefetch" href="/vuepress/assets/js/14.d64b9b75.js"><link rel="prefetch" href="/vuepress/assets/js/15.6676fa6d.js"><link rel="prefetch" href="/vuepress/assets/js/16.86059a6b.js"><link rel="prefetch" href="/vuepress/assets/js/17.1e2fb4a6.js"><link rel="prefetch" href="/vuepress/assets/js/18.2e0ecd0c.js"><link rel="prefetch" href="/vuepress/assets/js/19.5fb78108.js"><link rel="prefetch" href="/vuepress/assets/js/20.8685c2bd.js"><link rel="prefetch" href="/vuepress/assets/js/21.7f0c42c4.js"><link rel="prefetch" href="/vuepress/assets/js/22.985f34b5.js"><link rel="prefetch" href="/vuepress/assets/js/23.2b20fd2b.js"><link rel="prefetch" href="/vuepress/assets/js/24.db08b4d6.js"><link rel="prefetch" href="/vuepress/assets/js/25.0e478d3b.js"><link rel="prefetch" href="/vuepress/assets/js/26.c5992938.js"><link rel="prefetch" href="/vuepress/assets/js/27.b59572bc.js"><link rel="prefetch" href="/vuepress/assets/js/28.4fdb2c23.js"><link rel="prefetch" href="/vuepress/assets/js/29.878fee0b.js"><link rel="prefetch" href="/vuepress/assets/js/3.ba93d6f7.js"><link rel="prefetch" href="/vuepress/assets/js/30.75e781ca.js"><link rel="prefetch" href="/vuepress/assets/js/31.e1bdbe1b.js"><link rel="prefetch" href="/vuepress/assets/js/32.265c89e8.js"><link rel="prefetch" href="/vuepress/assets/js/33.47fc9bfd.js"><link rel="prefetch" href="/vuepress/assets/js/34.083db5ff.js"><link rel="prefetch" href="/vuepress/assets/js/35.93908102.js"><link rel="prefetch" href="/vuepress/assets/js/36.36831ff8.js"><link rel="prefetch" href="/vuepress/assets/js/37.fd01e82e.js"><link rel="prefetch" href="/vuepress/assets/js/38.b672f080.js"><link rel="prefetch" href="/vuepress/assets/js/39.5c5df8f5.js"><link rel="prefetch" href="/vuepress/assets/js/4.23e868ff.js"><link rel="prefetch" href="/vuepress/assets/js/40.7473f37e.js"><link rel="prefetch" href="/vuepress/assets/js/41.20e9fd31.js"><link rel="prefetch" href="/vuepress/assets/js/42.95c8e34f.js"><link rel="prefetch" href="/vuepress/assets/js/43.cd23655a.js"><link rel="prefetch" href="/vuepress/assets/js/44.8b9937f3.js"><link rel="prefetch" href="/vuepress/assets/js/45.39e0803a.js"><link rel="prefetch" href="/vuepress/assets/js/46.4b6f02fb.js"><link rel="prefetch" href="/vuepress/assets/js/47.f548942a.js"><link rel="prefetch" href="/vuepress/assets/js/48.ccf8bde5.js"><link rel="prefetch" href="/vuepress/assets/js/49.a50e542a.js"><link rel="prefetch" href="/vuepress/assets/js/5.78ced0b9.js"><link rel="prefetch" href="/vuepress/assets/js/50.bdefefbd.js"><link rel="prefetch" href="/vuepress/assets/js/51.17fb5723.js"><link rel="prefetch" href="/vuepress/assets/js/52.ccbce8f7.js"><link rel="prefetch" href="/vuepress/assets/js/53.6e449c2b.js"><link rel="prefetch" href="/vuepress/assets/js/54.0a4ffb6a.js"><link rel="prefetch" href="/vuepress/assets/js/55.07547dec.js"><link rel="prefetch" href="/vuepress/assets/js/56.9e44d9fd.js"><link rel="prefetch" href="/vuepress/assets/js/57.3c5d6c3f.js"><link rel="prefetch" href="/vuepress/assets/js/58.53112c8f.js"><link rel="prefetch" href="/vuepress/assets/js/59.a015e234.js"><link rel="prefetch" href="/vuepress/assets/js/6.a5bfbe67.js"><link rel="prefetch" href="/vuepress/assets/js/60.ccc2b76a.js"><link rel="prefetch" href="/vuepress/assets/js/61.0afe24ec.js"><link rel="prefetch" href="/vuepress/assets/js/62.3228a2c0.js"><link rel="prefetch" href="/vuepress/assets/js/7.32274a79.js"><link rel="prefetch" href="/vuepress/assets/js/9.7b27b259.js">
+    <link rel="stylesheet" href="/vuepress/assets/css/0.styles.909948e8.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/vuepress/" class="home-link router-link-active"><!----> <span class="site-name">VuePress</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/vuepress/" class="nav-link">
+  home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="studyRemarks" class="dropdown-title"><span class="title">studyRemarks</span> <span class="arrow down"></span></button> <button type="button" aria-label="studyRemarks" class="mobile-dropdown-title"><span class="title">studyRemarks</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/vuepress/study/java/" class="nav-link">
+  Java
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress/study/springboot/" class="nav-link">
+  SpringBoot
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress/study/springcloud/" class="nav-link">
+  SpringCloud
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress/study/linux/" class="nav-link">
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress/study/javascript/" class="nav-link">
+  Javascript
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress/study/vue/" class="nav-link router-link-active">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress/study/docker/" class="nav-link">
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress/study/other/" class="nav-link">
+  other
+</a></li></ul></div></div><div class="nav-item"><a href="/vuepress/favorite/" class="nav-link">
+  favorite tools
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="MyBlog" class="dropdown-title"><span class="title">MyBlog</span> <span class="arrow down"></span></button> <button type="button" aria-label="MyBlog" class="mobile-dropdown-title"><span class="title">MyBlog</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://blog.csdn.net/m0_37903882" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  csdn
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://juejin.im/user/5aa1029c51882555770c0603" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  掘金
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://www.jianshu.com/u/6740c2a5866d" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  简书
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://gitee.com/DuebassLei" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  码云
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://duebasslei.gitee.io" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  个人网站
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Select language" class="dropdown-title"><span class="title">Languages</span> <span class="arrow down"></span></button> <button type="button" aria-label="Select language" class="mobile-dropdown-title"><span class="title">Languages</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/vuepress/study/vue/arrayConvertTree.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  English
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress/zh/study/vue/arrayConvertTree.html" class="nav-link">
+  简体中文
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/vuepress/" class="nav-link">
+  home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="studyRemarks" class="dropdown-title"><span class="title">studyRemarks</span> <span class="arrow down"></span></button> <button type="button" aria-label="studyRemarks" class="mobile-dropdown-title"><span class="title">studyRemarks</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/vuepress/study/java/" class="nav-link">
+  Java
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress/study/springboot/" class="nav-link">
+  SpringBoot
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress/study/springcloud/" class="nav-link">
+  SpringCloud
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress/study/linux/" class="nav-link">
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress/study/javascript/" class="nav-link">
+  Javascript
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress/study/vue/" class="nav-link router-link-active">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress/study/docker/" class="nav-link">
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress/study/other/" class="nav-link">
+  other
+</a></li></ul></div></div><div class="nav-item"><a href="/vuepress/favorite/" class="nav-link">
+  favorite tools
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="MyBlog" class="dropdown-title"><span class="title">MyBlog</span> <span class="arrow down"></span></button> <button type="button" aria-label="MyBlog" class="mobile-dropdown-title"><span class="title">MyBlog</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://blog.csdn.net/m0_37903882" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  csdn
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://juejin.im/user/5aa1029c51882555770c0603" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  掘金
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://www.jianshu.com/u/6740c2a5866d" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  简书
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://gitee.com/DuebassLei" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  码云
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://duebasslei.gitee.io" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  个人网站
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Select language" class="dropdown-title"><span class="title">Languages</span> <span class="arrow down"></span></button> <button type="button" aria-label="Select language" class="mobile-dropdown-title"><span class="title">Languages</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/vuepress/study/vue/arrayConvertTree.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  English
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress/zh/study/vue/arrayConvertTree.html" class="nav-link">
+  简体中文
+</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Vue</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/vuepress/study/vue/" aria-current="page" class="sidebar-link">🔖 Vue</a></li><li><a href="/vuepress/study/vue/Moment.html" class="sidebar-link">🔖 Moment.js在vue中格式化日期</a></li><li><a href="/vuepress/study/vue/arrayConvertTree.html" aria-current="page" class="active sidebar-link">🔖 Array 转 Tree(平铺结构转树形层级结构)</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/vuepress/study/vue/arrayConvertTree.html#需求" class="sidebar-link">需求</a></li><li class="sidebar-sub-header"><a href="/vuepress/study/vue/arrayConvertTree.html#主要逻辑" class="sidebar-link">主要逻辑</a></li><li class="sidebar-sub-header"><a href="/vuepress/study/vue/arrayConvertTree.html#测试" class="sidebar-link">测试</a></li><li class="sidebar-sub-header"><a href="/vuepress/study/vue/arrayConvertTree.html#效果" class="sidebar-link">效果</a></li></ul></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>更多</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/vuepress/study/vue/About.html" class="sidebar-link">🍧 More</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="array-转-tree-平铺结构转树形层级结构"><a href="#array-转-tree-平铺结构转树形层级结构" class="header-anchor">#</a> 🔖 Array 转 Tree(平铺结构转树形层级结构)</h1> <h2 id="需求"><a href="#需求" class="header-anchor">#</a> 需求</h2> <blockquote><p>从后端接口获取数据，将List<T>集合以Json形式返回，返回数据形如下所示，现为了前端以树形结构展示，需将一维数据转化为树形结构。</T></p></blockquote> <div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">[</span>
+          <span class="token punctuation">{</span>
+            'groupId'<span class="token operator">:</span> '<span class="token number">1</span>'<span class="token punctuation">,</span>
+            'appId'<span class="token operator">:</span> 'M78'<span class="token punctuation">,</span>
+            'groupCode'<span class="token operator">:</span> '<span class="token number">1</span>'<span class="token punctuation">,</span>
+            'parentId'<span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+            'name'<span class="token operator">:</span> '火星情报局'<span class="token punctuation">,</span>
+            'treePath'<span class="token operator">:</span> 'gSLWUyPnLu'<span class="token punctuation">,</span>
+            'orderNum'<span class="token operator">:</span> '<span class="token number">0003</span>'<span class="token punctuation">,</span>
+            'status'<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+            'comments'<span class="token operator">:</span> '火星情报局总部'
+          <span class="token punctuation">}</span><span class="token punctuation">,</span>
+          <span class="token punctuation">{</span>
+
+            'groupId'<span class="token operator">:</span> '<span class="token number">2</span><span class="token number">-1</span>'<span class="token punctuation">,</span>
+            'appId'<span class="token operator">:</span> 'M78'<span class="token punctuation">,</span>
+            'groupCode'<span class="token operator">:</span> '<span class="token number">2</span><span class="token number">-1</span>'<span class="token punctuation">,</span>
+            'parentId'<span class="token operator">:</span> '<span class="token number">1</span>'<span class="token punctuation">,</span>
+            'name'<span class="token operator">:</span> '火星情报局<span class="token number">2</span><span class="token number">-1</span>'<span class="token punctuation">,</span>
+            'treePath'<span class="token operator">:</span> '5lqfrdymqsll8wrb0yu4i8rp.sh0yadschu7l5t0jalsftnzj.o9i5pcfcort29b7b5uh7nv5j'<span class="token punctuation">,</span>
+            'orderNum'<span class="token operator">:</span> '<span class="token number">000100010002</span>'<span class="token punctuation">,</span>
+            'status'<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+            'comments'<span class="token operator">:</span> '来自火星情报局'
+          <span class="token punctuation">}</span><span class="token punctuation">,</span>
+          <span class="token punctuation">{</span>
+            'groupId'<span class="token operator">:</span> '<span class="token number">2</span><span class="token number">-2</span>'<span class="token punctuation">,</span>
+            'appId'<span class="token operator">:</span> 'M78'<span class="token punctuation">,</span>
+            'groupCode'<span class="token operator">:</span> '<span class="token number">2</span><span class="token number">-2</span>'<span class="token punctuation">,</span>
+            'parentId'<span class="token operator">:</span> '<span class="token number">1</span>'<span class="token punctuation">,</span>
+            'name'<span class="token operator">:</span> '火星情报局<span class="token number">2</span><span class="token number">-2</span>'<span class="token punctuation">,</span>
+            'treePath'<span class="token operator">:</span> '5lqfrdymqsll8wrb0yu4i8rp.sh0yadschu7l5t0jalsftnzj.o8nnru8w5sqf6km2wa0rm1so'<span class="token punctuation">,</span>
+            'orderNum'<span class="token operator">:</span> '<span class="token number">000100010002</span>'<span class="token punctuation">,</span>
+            'status'<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+            'comments'<span class="token operator">:</span> '来自火星情报局'
+          <span class="token punctuation">}</span><span class="token punctuation">,</span>
+          <span class="token punctuation">{</span>
+            'groupId'<span class="token operator">:</span> '<span class="token number">2</span><span class="token number">-1</span><span class="token number">-1</span>'<span class="token punctuation">,</span>
+            'appId'<span class="token operator">:</span> 'M78'<span class="token punctuation">,</span>
+            'groupCode'<span class="token operator">:</span> '<span class="token number">4</span>'<span class="token punctuation">,</span>
+            'parentId'<span class="token operator">:</span> '<span class="token number">2</span><span class="token number">-1</span>'<span class="token punctuation">,</span>
+            'name'<span class="token operator">:</span> '火星情报局<span class="token number">2</span><span class="token number">-1</span><span class="token number">-1</span>'<span class="token punctuation">,</span>
+            'treePath'<span class="token operator">:</span> '5lqfrdymqsll8wrb0yu4i8rp.nqkskjl03rg78rb5k5okfpm2'<span class="token punctuation">,</span>
+            'orderNum'<span class="token operator">:</span> '<span class="token number">00010001</span>'<span class="token punctuation">,</span>
+            'status'<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+            'comments'<span class="token operator">:</span> '来自火星情报局'
+          <span class="token punctuation">}</span>
+<span class="token punctuation">]</span>
+</code></pre></div><h2 id="主要逻辑"><a href="#主要逻辑" class="header-anchor">#</a> 主要逻辑</h2> <p>调整以下两个参数对应相应数据参数，即可</p> <ul><li>${parentId}  父ID</li> <li>${groupId}   ID</li></ul> <div class="language-javascript extra-class"><pre class="language-javascript"><code> <span class="token function">arrayConvertTree</span> <span class="token punctuation">(</span><span class="token parameter">list <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> data <span class="token operator">=</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>list<span class="token punctuation">)</span><span class="token punctuation">)</span> 
+      <span class="token keyword">const</span> result <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>Array<span class="token punctuation">.</span><span class="token function">isArray</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> result
+      <span class="token punctuation">}</span>
+      data<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">item</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        <span class="token keyword">delete</span> item<span class="token punctuation">.</span>children
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+      <span class="token keyword">const</span> map <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+      data<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">item</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        map<span class="token punctuation">[</span>item<span class="token punctuation">.</span>groupId<span class="token punctuation">]</span> <span class="token operator">=</span> item
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+      data<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">item</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        <span class="token keyword">const</span> parent <span class="token operator">=</span> map<span class="token punctuation">[</span>item<span class="token punctuation">.</span>parentId<span class="token punctuation">]</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>parent<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token punctuation">(</span>parent<span class="token punctuation">.</span>children <span class="token operator">||</span> <span class="token punctuation">(</span>parent<span class="token punctuation">.</span>children <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+          result<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+      <span class="token keyword">return</span> result
+    <span class="token punctuation">}</span>
+</code></pre></div><h2 id="测试"><a href="#测试" class="header-anchor">#</a> 测试</h2> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">const</span> tree <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">arrayConvertTree</span><span class="token punctuation">(</span>dataSource<span class="token punctuation">)</span> <span class="token comment">// dataSource 为后端获取的jsonArray数据</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>tree<span class="token punctuation">)</span>
+</code></pre></div><p><img src="/vuepress/assets/img/arrayConvertTree1.d53bdf0b.png" alt="console输出"></p> <p>至此，已成功将 Array 转为 Tree。</p> <h2 id="效果"><a href="#效果" class="header-anchor">#</a> 效果</h2> <blockquote><p>前端使用的是 Ant-Design-Vue 中的 Table 组件</p></blockquote> <p><img src="/vuepress/assets/img/arrayConvertTree2.4c13a59b.png" alt="效果"></p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token operator">&lt;</span>template<span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span>a<span class="token operator">-</span>card
+    <span class="token operator">:</span>bordered<span class="token operator">=</span><span class="token string">&quot;false&quot;</span>
+  <span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>div slot<span class="token operator">=</span><span class="token string">&quot;extra&quot;</span><span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span>a<span class="token operator">-</span>button type<span class="token operator">=</span><span class="token string">&quot;primary&quot;</span> @click<span class="token operator">=</span><span class="token string">&quot;handleGroupList&quot;</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span>a<span class="token operator">-</span>icon type<span class="token operator">=</span><span class="token string">&quot;plus&quot;</span> <span class="token operator">/</span><span class="token operator">&gt;</span>新增根用户<span class="token operator">&lt;</span><span class="token operator">/</span>a<span class="token operator">-</span>button<span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span>a<span class="token operator">-</span>button type<span class="token operator">=</span><span class="token string">&quot;primary&quot;</span> style<span class="token operator">=</span><span class="token string">&quot;margin-left: 15px;&quot;</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span>a<span class="token operator">-</span>icon type<span class="token operator">=</span><span class="token string">&quot;minus&quot;</span> <span class="token operator">/</span><span class="token operator">&gt;</span>批量删除<span class="token operator">&lt;</span><span class="token operator">/</span>a<span class="token operator">-</span>button<span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span>a<span class="token operator">-</span>select defaultValue<span class="token operator">=</span><span class="token string">&quot;name&quot;</span> @change<span class="token operator">=</span><span class="token string">&quot;handleChange&quot;</span> style<span class="token operator">=</span><span class="token string">&quot;margin-left: 16px; &quot;</span><span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>a<span class="token operator">-</span>select<span class="token operator">-</span>option value<span class="token operator">=</span><span class="token string">&quot;dept&quot;</span><span class="token operator">&gt;</span>部门<span class="token operator">&lt;</span><span class="token operator">/</span>a<span class="token operator">-</span>select<span class="token operator">-</span>option<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>a<span class="token operator">-</span>select<span class="token operator">-</span>option value<span class="token operator">=</span><span class="token string">&quot;other&quot;</span><span class="token operator">&gt;</span>其他<span class="token operator">&lt;</span><span class="token operator">/</span>a<span class="token operator">-</span>select<span class="token operator">-</span>option<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>a<span class="token operator">-</span>select<span class="token operator">-</span>option value<span class="token operator">=</span><span class="token string">&quot;name&quot;</span><span class="token operator">&gt;</span>组名称<span class="token operator">&lt;</span><span class="token operator">/</span>a<span class="token operator">-</span>select<span class="token operator">-</span>option<span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span><span class="token operator">/</span>a<span class="token operator">-</span>select<span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span>a<span class="token operator">-</span>input style<span class="token operator">=</span><span class="token string">&quot;width: 225px;&quot;</span> placeholder<span class="token operator">=</span><span class="token string">&quot;请输入&quot;</span><span class="token operator">/</span><span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>a<span class="token operator">-</span>table <span class="token operator">:</span>columns<span class="token operator">=</span><span class="token string">&quot;columns&quot;</span> <span class="token operator">:</span>dataSource<span class="token operator">=</span><span class="token string">&quot;data&quot;</span> <span class="token operator">:</span>rowSelection<span class="token operator">=</span><span class="token string">&quot;rowSelection&quot;</span> <span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span>span slot<span class="token operator">=</span><span class="token string">&quot;serial&quot;</span> slot<span class="token operator">-</span>scope<span class="token operator">=</span><span class="token string">&quot;text, record, index&quot;</span><span class="token operator">&gt;</span>
+        <span class="token punctuation">{</span><span class="token punctuation">{</span> index <span class="token operator">+</span> <span class="token number">1</span> <span class="token punctuation">}</span><span class="token punctuation">}</span>
+      <span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span>span slot<span class="token operator">=</span><span class="token string">&quot;status&quot;</span> slot<span class="token operator">-</span>scope<span class="token operator">=</span><span class="token string">&quot;text&quot;</span><span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>a<span class="token operator">-</span>badge <span class="token operator">:</span>status<span class="token operator">=</span><span class="token string">&quot;text | statusTypeFilter&quot;</span> <span class="token operator">:</span>text<span class="token operator">=</span><span class="token string">&quot;text | statusFilter&quot;</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">&gt;</span>
+
+      <span class="token operator">&lt;</span>span slot<span class="token operator">=</span><span class="token string">&quot;action&quot;</span> slot<span class="token operator">-</span>scope<span class="token operator">=</span><span class="token string">&quot;text, record&quot;</span><span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>template<span class="token operator">&gt;</span>
+          <span class="token operator">&lt;</span>a @click<span class="token operator">=</span><span class="token string">&quot;handleAdd(record)&quot;</span><span class="token operator">&gt;</span>添加<span class="token operator">&lt;</span><span class="token operator">/</span>a<span class="token operator">&gt;</span>
+          <span class="token operator">&lt;</span>a<span class="token operator">-</span>divider type<span class="token operator">=</span><span class="token string">&quot;vertical&quot;</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
+          <span class="token operator">&lt;</span>a @click<span class="token operator">=</span><span class="token string">&quot;handleSetUser(record)&quot;</span><span class="token operator">&gt;</span>配置用户<span class="token operator">&lt;</span><span class="token operator">/</span>a<span class="token operator">&gt;</span>
+          <span class="token operator">&lt;</span>a<span class="token operator">-</span>divider type<span class="token operator">=</span><span class="token string">&quot;vertical&quot;</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
+          <span class="token operator">&lt;</span>a @click<span class="token operator">=</span><span class="token string">&quot;handleDel(record)&quot;</span><span class="token operator">&gt;</span>删除<span class="token operator">&lt;</span><span class="token operator">/</span>a<span class="token operator">&gt;</span>
+          <span class="token operator">&lt;</span>a<span class="token operator">-</span>divider type<span class="token operator">=</span><span class="token string">&quot;vertical&quot;</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
+          <span class="token operator">&lt;</span>a @click<span class="token operator">=</span><span class="token string">&quot;handleEdit(record)&quot;</span><span class="token operator">&gt;</span>编辑<span class="token operator">&lt;</span><span class="token operator">/</span>a<span class="token operator">&gt;</span>
+          <span class="token operator">&lt;</span>a<span class="token operator">-</span>divider type<span class="token operator">=</span><span class="token string">&quot;vertical&quot;</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>template<span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>a<span class="token operator">-</span>table<span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span><span class="token operator">/</span>a<span class="token operator">-</span>card<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>template<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>script<span class="token operator">&gt;</span>
+<span class="token keyword">const</span> columns <span class="token operator">=</span> <span class="token punctuation">[</span>
+  <span class="token punctuation">{</span>
+    title<span class="token operator">:</span> <span class="token string">'组名称'</span><span class="token punctuation">,</span>
+    dataIndex<span class="token operator">:</span> <span class="token string">'name'</span><span class="token punctuation">,</span>
+    key<span class="token operator">:</span> <span class="token string">'name'</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span>
+    title<span class="token operator">:</span> <span class="token string">'状态'</span><span class="token punctuation">,</span>
+    dataIndex<span class="token operator">:</span> <span class="token string">'status'</span><span class="token punctuation">,</span>
+    key<span class="token operator">:</span> <span class="token string">'status'</span><span class="token punctuation">,</span>
+    width<span class="token operator">:</span> <span class="token string">'12%'</span>
+    <span class="token comment">// scopedSlots: { customRender: 'status' }</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    title<span class="token operator">:</span> <span class="token string">'说明'</span><span class="token punctuation">,</span>
+    dataIndex<span class="token operator">:</span> <span class="token string">'comments'</span><span class="token punctuation">,</span>
+    width<span class="token operator">:</span> <span class="token string">'20%'</span><span class="token punctuation">,</span>
+    key<span class="token operator">:</span> <span class="token string">'comments'</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span>
+    title<span class="token operator">:</span> <span class="token string">'操作'</span><span class="token punctuation">,</span>
+    dataIndex<span class="token operator">:</span> <span class="token string">'action'</span><span class="token punctuation">,</span>
+    width<span class="token operator">:</span> <span class="token string">'30%'</span><span class="token punctuation">,</span>
+    key<span class="token operator">:</span> <span class="token string">'action'</span><span class="token punctuation">,</span>
+    scopedSlots<span class="token operator">:</span> <span class="token punctuation">{</span> customRender<span class="token operator">:</span> <span class="token string">'action'</span> <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">]</span>
+<span class="token keyword">const</span> rowSelection <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token function-variable function">onChange</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token parameter">selectedRowKeys<span class="token punctuation">,</span> selectedRows</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">selectedRowKeys: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>selectedRowKeys<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span> <span class="token string">'selectedRows: '</span><span class="token punctuation">,</span> selectedRows<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function-variable function">onSelect</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token parameter">record<span class="token punctuation">,</span> selected<span class="token punctuation">,</span> selectedRows</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>record<span class="token punctuation">,</span> selected<span class="token punctuation">,</span> selectedRows<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function-variable function">onSelectAll</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token parameter">selected<span class="token punctuation">,</span> selectedRows<span class="token punctuation">,</span> changeRows</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>selected<span class="token punctuation">,</span> selectedRows<span class="token punctuation">,</span> changeRows<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  <span class="token function">data</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      data<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      columns<span class="token punctuation">,</span>
+      rowSelection<span class="token punctuation">,</span>
+      dataSource<span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
+      result<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      temp<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  methods<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token function">initGroupList</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> datas <span class="token operator">=</span>  JsonData <span class="token comment">//上方给出的Json数据</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>data <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">arrayConvertTree</span><span class="token punctuation">(</span>datas<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token function">handleGroupList</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token comment">// Array 转 Tree 核心算法函数arrayConvertTree()</span>
+    <span class="token function">arrayConvertTree</span> <span class="token punctuation">(</span><span class="token parameter">list <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> data <span class="token operator">=</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>list<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// 浅拷贝不改变源数据</span>
+      <span class="token keyword">const</span> result <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>Array<span class="token punctuation">.</span><span class="token function">isArray</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> result
+      <span class="token punctuation">}</span>
+      data<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">item</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        <span class="token keyword">delete</span> item<span class="token punctuation">.</span>children
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+      <span class="token keyword">const</span> map <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+      data<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">item</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        map<span class="token punctuation">[</span>item<span class="token punctuation">.</span>groupId<span class="token punctuation">]</span> <span class="token operator">=</span> item
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+      data<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">item</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        <span class="token keyword">const</span> parent <span class="token operator">=</span> map<span class="token punctuation">[</span>item<span class="token punctuation">.</span>parentId<span class="token punctuation">]</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>parent<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token punctuation">(</span>parent<span class="token punctuation">.</span>children <span class="token operator">||</span> <span class="token punctuation">(</span>parent<span class="token punctuation">.</span>children <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+          result<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+      <span class="token keyword">return</span> result
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function">mounted</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">initGroupList</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/vuepress/study/vue/Moment.html" class="prev">
+        🔖 Moment.js在vue中格式化日期
+      </a></span> <span class="next"><a href="/vuepress/study/vue/About.html">
+        🍧 More
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/vuepress/assets/js/app.5b875f68.js" defer></script><script src="/vuepress/assets/js/2.85ec67f1.js" defer></script><script src="/vuepress/assets/js/8.2184aefc.js" defer></script>
+  </body>
+</html>
