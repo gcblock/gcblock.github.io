@@ -7,13 +7,13 @@ module.exports = {
         // 作为特例，默认语言可以使用 '/' 作为其路径。
         '/': {
             lang: 'en-US', // 将会被设置为 <html> 的 lang 属性
-            title: 'VuePress',
-            description: 'Vue-powered Static Site Generator'
+            title: '英文首页标题',
+            description: '英文首页'
         },
         '/zh/': {
             lang: 'zh-CN',
-            title: '谢谢',
-            description: 'Vue 驱动的静态网站生成器'
+            title: '中文首页标题',
+            description: '中文首页'
         }
     },
     themeConfig: {
