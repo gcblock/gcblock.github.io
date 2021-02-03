@@ -16,6 +16,6 @@ git add -A
 git commit -m 'deploy'
 
 # 如果发布到 https://<USERNAME>.github.io/<REPO>
-git push -f https://gitee.com/pan-zhen-zhonglian/vuepress.git master:master
+git push -f git remote add origin https://github.com/gcblock/doc.git master:master
 
 cd -
