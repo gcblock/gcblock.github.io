@@ -115,7 +115,7 @@ module.exports = {
             }
         }
     },
-    base: '/doc/',
+    base: '/docs/',
     dest: './docs/.vuepress/dist',
     // 假定 GitHub。也可以是一个完整的 GitLab URL。
     repo: 'https://github.com/DuebassLei/vuepress-blog',

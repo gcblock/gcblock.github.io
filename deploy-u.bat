@@ -1,10 +1,4 @@
-cd docs/.vuepress/dist
-git init
-git add .
-git commit -m "更新"
-git remote add origin https://github.com/gcblock/doc.git
-git checkout -b main origin/main
-git push -u origin main
-
-cd ../../../
-
+git remote add -f docs/.vuepress/dist https://github.com/gcblock/doc.git
+git subtree add --prefix=docs/.vuepress/dist dist master --squash
+git subtree pull --prefix=docs/.vuepress/dist https://github.com/gcblock/doc.git master --squash
+git subtree push --prefix=docs/.vuepress/dist https://github.com/gcblock/doc.git master
