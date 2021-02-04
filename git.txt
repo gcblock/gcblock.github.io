@@ -1,3 +1,0 @@
-git remote remove origin
-git push origin :github
-git branch -D github
