@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>🔖 Git Question Sheet | GC共识算法</title>
+    <meta name="generator" content="VuePress 1.8.0">
+    
+    <meta name="description" content="GC共识算法是通过委托和担保的社会行为演化成的算法。旨在提供安全、高效的区块链技术架构。">
+    
+    <link rel="preload" href="/assets/css/0.styles.7be9beac.css" as="style"><link rel="preload" href="/assets/js/app.40663826.js" as="script"><link rel="preload" href="/assets/js/2.8ca39476.js" as="script"><link rel="preload" href="/assets/js/54.a7e8ea82.js" as="script"><link rel="prefetch" href="/assets/js/10.88086172.js"><link rel="prefetch" href="/assets/js/11.cbd6b5bd.js"><link rel="prefetch" href="/assets/js/12.c1b8e2d7.js"><link rel="prefetch" href="/assets/js/13.6121180d.js"><link rel="prefetch" href="/assets/js/14.f72b75e1.js"><link rel="prefetch" href="/assets/js/15.68a38169.js"><link rel="prefetch" href="/assets/js/16.6ac97644.js"><link rel="prefetch" href="/assets/js/17.9bd56fb5.js"><link rel="prefetch" href="/assets/js/18.1247a208.js"><link rel="prefetch" href="/assets/js/19.d6c1f847.js"><link rel="prefetch" href="/assets/js/20.69bc50a7.js"><link rel="prefetch" href="/assets/js/21.da56a6ec.js"><link rel="prefetch" href="/assets/js/22.4c01196f.js"><link rel="prefetch" href="/assets/js/23.a643bb80.js"><link rel="prefetch" href="/assets/js/24.54750d7d.js"><link rel="prefetch" href="/assets/js/25.1aae7bfb.js"><link rel="prefetch" href="/assets/js/26.60aa1fe0.js"><link rel="prefetch" href="/assets/js/27.d73ca708.js"><link rel="prefetch" href="/assets/js/28.b2e7e510.js"><link rel="prefetch" href="/assets/js/29.d9e3660e.js"><link rel="prefetch" href="/assets/js/3.d9a7b06e.js"><link rel="prefetch" href="/assets/js/30.b89d25f4.js"><link rel="prefetch" href="/assets/js/31.ac6490db.js"><link rel="prefetch" href="/assets/js/32.a2f8920d.js"><link rel="prefetch" href="/assets/js/33.3bc4346a.js"><link rel="prefetch" href="/assets/js/34.818108c2.js"><link rel="prefetch" href="/assets/js/35.8a908abc.js"><link rel="prefetch" href="/assets/js/36.b5b9824c.js"><link rel="prefetch" href="/assets/js/37.0a035a23.js"><link rel="prefetch" href="/assets/js/38.d80c1602.js"><link rel="prefetch" href="/assets/js/39.c268c160.js"><link rel="prefetch" href="/assets/js/4.e828f2f8.js"><link rel="prefetch" href="/assets/js/40.d9830fa2.js"><link rel="prefetch" href="/assets/js/41.d337b75c.js"><link rel="prefetch" href="/assets/js/42.481410b4.js"><link rel="prefetch" href="/assets/js/43.481ad61a.js"><link rel="prefetch" href="/assets/js/44.1a02ae9e.js"><link rel="prefetch" href="/assets/js/45.1d57af7c.js"><link rel="prefetch" href="/assets/js/46.39553e88.js"><link rel="prefetch" href="/assets/js/47.33b1b3a0.js"><link rel="prefetch" href="/assets/js/48.c90eb03d.js"><link rel="prefetch" href="/assets/js/49.e6673445.js"><link rel="prefetch" href="/assets/js/5.543d8535.js"><link rel="prefetch" href="/assets/js/50.91b677ee.js"><link rel="prefetch" href="/assets/js/51.c1b192d3.js"><link rel="prefetch" href="/assets/js/52.9591a28c.js"><link rel="prefetch" href="/assets/js/53.538f0963.js"><link rel="prefetch" href="/assets/js/55.69a908f2.js"><link rel="prefetch" href="/assets/js/56.bd1257e1.js"><link rel="prefetch" href="/assets/js/57.057da920.js"><link rel="prefetch" href="/assets/js/58.b9e0f731.js"><link rel="prefetch" href="/assets/js/59.264f68a6.js"><link rel="prefetch" href="/assets/js/6.98f40bd6.js"><link rel="prefetch" href="/assets/js/60.09329b8c.js"><link rel="prefetch" href="/assets/js/61.c899643d.js"><link rel="prefetch" href="/assets/js/62.51701caa.js"><link rel="prefetch" href="/assets/js/63.221f3970.js"><link rel="prefetch" href="/assets/js/64.ac62d453.js"><link rel="prefetch" href="/assets/js/65.dfacdff7.js"><link rel="prefetch" href="/assets/js/66.19a060cb.js"><link rel="prefetch" href="/assets/js/7.e22e7206.js"><link rel="prefetch" href="/assets/js/8.3e9ff4f7.js"><link rel="prefetch" href="/assets/js/9.3808c92e.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.7be9beac.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/zh/" class="home-link router-link-active"><!----> <span class="site-name">GC共识算法</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/zh/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="学习" class="dropdown-title"><span class="title">学习</span> <span class="arrow down"></span></button> <button type="button" aria-label="学习" class="mobile-dropdown-title"><span class="title">学习</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/zh/study/javascript/" class="nav-link">
+  区块链
+</a></li><li class="dropdown-item"><!----> <a href="/zh/study/gc/" class="nav-link">
+  GC共识算法
+</a></li><li class="dropdown-item"><!----> <a href="/zh/study/aMeta/" class="nav-link">
+  aMeta元数据设计与实现
+</a></li><li class="dropdown-item"><!----> <a href="/zh/study/linux/" class="nav-link router-link-active">
+  众联共识白皮书
+</a></li></ul></div></div><div class="nav-item"><a href="/zh/favorite/" class="nav-link">
+  收藏工具
+</a></div><div class="nav-item"><a href="/zh/team/" class="nav-link">
+  团队
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Select language" class="dropdown-title"><span class="title">选择语言</span> <span class="arrow down"></span></button> <button type="button" aria-label="Select language" class="mobile-dropdown-title"><span class="title">选择语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/study/linux/Git-Qs.html" class="nav-link">
+  English
+</a></li><li class="dropdown-item"><!----> <a href="/zh/study/linux/Git-Qs.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  简体中文
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/zh/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="学习" class="dropdown-title"><span class="title">学习</span> <span class="arrow down"></span></button> <button type="button" aria-label="学习" class="mobile-dropdown-title"><span class="title">学习</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/zh/study/javascript/" class="nav-link">
+  区块链
+</a></li><li class="dropdown-item"><!----> <a href="/zh/study/gc/" class="nav-link">
+  GC共识算法
+</a></li><li class="dropdown-item"><!----> <a href="/zh/study/aMeta/" class="nav-link">
+  aMeta元数据设计与实现
+</a></li><li class="dropdown-item"><!----> <a href="/zh/study/linux/" class="nav-link router-link-active">
+  众联共识白皮书
+</a></li></ul></div></div><div class="nav-item"><a href="/zh/favorite/" class="nav-link">
+  收藏工具
+</a></div><div class="nav-item"><a href="/zh/team/" class="nav-link">
+  团队
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Select language" class="dropdown-title"><span class="title">选择语言</span> <span class="arrow down"></span></button> <button type="button" aria-label="Select language" class="mobile-dropdown-title"><span class="title">选择语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/study/linux/Git-Qs.html" class="nav-link">
+  English
+</a></li><li class="dropdown-item"><!----> <a href="/zh/study/linux/Git-Qs.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  简体中文
+</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Linux</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/zh/study/linux/" aria-current="page" class="sidebar-link">🍉 Linux</a></li><li><a href="/zh/study/linux/SetProxy.html" class="sidebar-link">🔖 常见代理设置</a></li><li><a href="/zh/study/linux/Git-Qs.html" aria-current="page" class="active sidebar-link">🔖 Git Question Sheet</a></li><li><a href="/zh/study/linux/IosVpn.html" class="sidebar-link">🔖 ios 配置openVPN客户端</a></li><li><a href="/zh/study/linux/InstallTools.html" class="sidebar-link">🔖 Centos安装Node,Npm,Yarn</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>更多</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/zh/study/linux/About.html" class="sidebar-link">🍧 更多</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="git-question-sheet"><a href="#git-question-sheet" class="header-anchor">#</a> 🔖 Git Question Sheet</h1></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/zh/study/linux/SetProxy.html" class="prev">
+        🔖 常见代理设置
+      </a></span> <span class="next"><a href="/zh/study/linux/IosVpn.html">
+        🔖 ios 配置openVPN客户端
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.40663826.js" defer></script><script src="/assets/js/2.8ca39476.js" defer></script><script src="/assets/js/54.a7e8ea82.js" defer></script>
+  </body>
+</html>

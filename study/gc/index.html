@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Design and implementation of algorithm based on entrustment and guarantee behavior | GC Consensus algorithm</title>
+    <meta name="generator" content="VuePress 1.8.0">
+    
+    <meta name="description" content="GC consensus algorithm is evolved from the social behavior of entrustment and guarantee. It aims to provide a secure and efficient blockchain technology architecture.">
+    
+    <link rel="preload" href="/assets/css/0.styles.7be9beac.css" as="style"><link rel="preload" href="/assets/js/app.40663826.js" as="script"><link rel="preload" href="/assets/js/2.8ca39476.js" as="script"><link rel="preload" href="/assets/js/22.4c01196f.js" as="script"><link rel="prefetch" href="/assets/js/10.88086172.js"><link rel="prefetch" href="/assets/js/11.cbd6b5bd.js"><link rel="prefetch" href="/assets/js/12.c1b8e2d7.js"><link rel="prefetch" href="/assets/js/13.6121180d.js"><link rel="prefetch" href="/assets/js/14.f72b75e1.js"><link rel="prefetch" href="/assets/js/15.68a38169.js"><link rel="prefetch" href="/assets/js/16.6ac97644.js"><link rel="prefetch" href="/assets/js/17.9bd56fb5.js"><link rel="prefetch" href="/assets/js/18.1247a208.js"><link rel="prefetch" href="/assets/js/19.d6c1f847.js"><link rel="prefetch" href="/assets/js/20.69bc50a7.js"><link rel="prefetch" href="/assets/js/21.da56a6ec.js"><link rel="prefetch" href="/assets/js/23.a643bb80.js"><link rel="prefetch" href="/assets/js/24.54750d7d.js"><link rel="prefetch" href="/assets/js/25.1aae7bfb.js"><link rel="prefetch" href="/assets/js/26.60aa1fe0.js"><link rel="prefetch" href="/assets/js/27.d73ca708.js"><link rel="prefetch" href="/assets/js/28.b2e7e510.js"><link rel="prefetch" href="/assets/js/29.d9e3660e.js"><link rel="prefetch" href="/assets/js/3.d9a7b06e.js"><link rel="prefetch" href="/assets/js/30.b89d25f4.js"><link rel="prefetch" href="/assets/js/31.ac6490db.js"><link rel="prefetch" href="/assets/js/32.a2f8920d.js"><link rel="prefetch" href="/assets/js/33.3bc4346a.js"><link rel="prefetch" href="/assets/js/34.818108c2.js"><link rel="prefetch" href="/assets/js/35.8a908abc.js"><link rel="prefetch" href="/assets/js/36.b5b9824c.js"><link rel="prefetch" href="/assets/js/37.0a035a23.js"><link rel="prefetch" href="/assets/js/38.d80c1602.js"><link rel="prefetch" href="/assets/js/39.c268c160.js"><link rel="prefetch" href="/assets/js/4.e828f2f8.js"><link rel="prefetch" href="/assets/js/40.d9830fa2.js"><link rel="prefetch" href="/assets/js/41.d337b75c.js"><link rel="prefetch" href="/assets/js/42.481410b4.js"><link rel="prefetch" href="/assets/js/43.481ad61a.js"><link rel="prefetch" href="/assets/js/44.1a02ae9e.js"><link rel="prefetch" href="/assets/js/45.1d57af7c.js"><link rel="prefetch" href="/assets/js/46.39553e88.js"><link rel="prefetch" href="/assets/js/47.33b1b3a0.js"><link rel="prefetch" href="/assets/js/48.c90eb03d.js"><link rel="prefetch" href="/assets/js/49.e6673445.js"><link rel="prefetch" href="/assets/js/5.543d8535.js"><link rel="prefetch" href="/assets/js/50.91b677ee.js"><link rel="prefetch" href="/assets/js/51.c1b192d3.js"><link rel="prefetch" href="/assets/js/52.9591a28c.js"><link rel="prefetch" href="/assets/js/53.538f0963.js"><link rel="prefetch" href="/assets/js/54.a7e8ea82.js"><link rel="prefetch" href="/assets/js/55.69a908f2.js"><link rel="prefetch" href="/assets/js/56.bd1257e1.js"><link rel="prefetch" href="/assets/js/57.057da920.js"><link rel="prefetch" href="/assets/js/58.b9e0f731.js"><link rel="prefetch" href="/assets/js/59.264f68a6.js"><link rel="prefetch" href="/assets/js/6.98f40bd6.js"><link rel="prefetch" href="/assets/js/60.09329b8c.js"><link rel="prefetch" href="/assets/js/61.c899643d.js"><link rel="prefetch" href="/assets/js/62.51701caa.js"><link rel="prefetch" href="/assets/js/63.221f3970.js"><link rel="prefetch" href="/assets/js/64.ac62d453.js"><link rel="prefetch" href="/assets/js/65.dfacdff7.js"><link rel="prefetch" href="/assets/js/66.19a060cb.js"><link rel="prefetch" href="/assets/js/7.e22e7206.js"><link rel="prefetch" href="/assets/js/8.3e9ff4f7.js"><link rel="prefetch" href="/assets/js/9.3808c92e.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.7be9beac.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">GC Consensus algorithm</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="study" class="dropdown-title"><span class="title">study</span> <span class="arrow down"></span></button> <button type="button" aria-label="study" class="mobile-dropdown-title"><span class="title">study</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/study/javascript/" class="nav-link">
+  blockchain
+</a></li><li class="dropdown-item"><!----> <a href="/study/gc/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  GC Consensus algorithm
+</a></li><li class="dropdown-item"><!----> <a href="/study/aMeta/" class="nav-link">
+  Design of metadata system
+</a></li><li class="dropdown-item"><!----> <a href="/study/linux/" class="nav-link">
+  Consensus of all
+</a></li></ul></div></div><div class="nav-item"><a href="/favorite/" class="nav-link">
+  favorite tools
+</a></div><div class="nav-item"><a href="/team/" class="nav-link">
+  team
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Select language" class="dropdown-title"><span class="title">Languages</span> <span class="arrow down"></span></button> <button type="button" aria-label="Select language" class="mobile-dropdown-title"><span class="title">Languages</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/study/gc/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  English
+</a></li><li class="dropdown-item"><!----> <a href="/zh/study/gc/" class="nav-link">
+  简体中文
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="study" class="dropdown-title"><span class="title">study</span> <span class="arrow down"></span></button> <button type="button" aria-label="study" class="mobile-dropdown-title"><span class="title">study</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/study/javascript/" class="nav-link">
+  blockchain
+</a></li><li class="dropdown-item"><!----> <a href="/study/gc/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  GC Consensus algorithm
+</a></li><li class="dropdown-item"><!----> <a href="/study/aMeta/" class="nav-link">
+  Design of metadata system
+</a></li><li class="dropdown-item"><!----> <a href="/study/linux/" class="nav-link">
+  Consensus of all
+</a></li></ul></div></div><div class="nav-item"><a href="/favorite/" class="nav-link">
+  favorite tools
+</a></div><div class="nav-item"><a href="/team/" class="nav-link">
+  team
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Select language" class="dropdown-title"><span class="title">Languages</span> <span class="arrow down"></span></button> <button type="button" aria-label="Select language" class="mobile-dropdown-title"><span class="title">Languages</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/study/gc/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  English
+</a></li><li class="dropdown-item"><!----> <a href="/zh/study/gc/" class="nav-link">
+  简体中文
+</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>GC</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/study/gc/" aria-current="page" class="active sidebar-link">Design and implementation of algorithm based on entrustment and guarantee behavior</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/study/gc/#pick-to" class="sidebar-link">Pick to</a></li><li class="sidebar-sub-header"><a href="/study/gc/#chapter-1-introduction" class="sidebar-link">Chapter 1 Introduction</a></li><li class="sidebar-sub-header"><a href="/study/gc/#chapter-2-gc-consensus-algorithm" class="sidebar-link">Chapter 2: GC consensus algorithm</a></li><li class="sidebar-sub-header"><a href="/study/gc/#chapter-3-blockchain-system-design-and-implementation" class="sidebar-link">Chapter 3 Blockchain System Design and Implementation</a></li><li class="sidebar-sub-header"><a href="/study/gc/#to-thank" class="sidebar-link">To thank</a></li></ul></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>more</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/study/gc/About.html" class="sidebar-link">🍧 数据库1</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="design-and-implementation-of-algorithm-based-on-entrustment-and-guarantee-behavior"><a href="#design-and-implementation-of-algorithm-based-on-entrustment-and-guarantee-behavior" class="header-anchor">#</a> Design and implementation of algorithm based on entrustment and guarantee behavior</h1> <h2 id="pick-to"><a href="#pick-to" class="header-anchor">#</a> Pick to</h2> <p>  At present, when people enjoy digital products on the Internet, they are faced
+with huge trust cost. The natural decentralization of blockchain technology,
+data cannot be tampered with, traceability and other characteristics are
+efficient solutions to solve the problem of Internet trust and improve
+production efficiency. However, the consensus algorithm adopted by the current
+blockchain technology still has problems such as weak decentralization, low
+throughput and waste of resources. With the vigorous development of the Internet
+of Things and artificial intelligence, enterprises and governments are in urgent
+need of developing the blockchain technology, so as to realize the building of
+rich upper application and widely recognized blockchain technology.</p> <p>  By studying consensus algorithms such as PoW and DPOS, it is found that they all
+have resource-oriented security shortcomings. When resources are centralized, it
+means that a single node has a high weight in the public, and the imtamperable
+property of blockchain data will be invalid.Entrust the security Certificate
+consensus algorithm (Guarantee Certificate) referred to as &quot;GC,
+inspired by method of the astronomical Taoism, commissioned in the society and
+guarantee the behavior of the chain of responsibility mechanism is constructed
+to guarantee the data cannot be tampered with, the client pay the bills, the
+guarantor guarantees the bill is valid, the top node honest record client submit
+payment chain provide the basis for yourself, the final data aggregation for
+payer bill is&quot; inevitable &quot;, legal if not legally initiate collective
+arbitration, restriction and accountability for cheaters.Through this
+responsibility chain mechanism, multi-direction supervision is formed in the
+community to monitor cheating behavior in the blockchain network. User resources
+are guaranteed through the accountability mechanism, cheaters are punished, and
+attacks bear huge risks. The security capability is not dependent on the
+proportion of individual resources, and resource centralization is refused.The
+GC consensus algorithm takes the role as the unit of the system, so that a
+single node can be deployed in a cluster, and the load capacity of individual
+nodes can be improved horizontally.Bills generated by all nodes on the data are
+valid data and constitute a responsibility chain to realize value drive. The
+payment mode of TPS with low risk and &quot;infinite high&quot; (only considering the
+dimensions of consensus, not considering the limitations of hardware and
+underlying system dependence) and the payment mode with zero risk waiting for
+aggregation confirmation are selected flexibly for risk assessment.In this
+paper, the algorithm process will be described in detail around the above
+functional points and the flow chart. Based on this theoretical basis, the
+blockchain engine based on the chain of responsibility mechanism will be
+realized. Finally, whether it meets the theoretical design requirements will be
+verified through functional tests and performance tests.</p> <p>  The block chain system developed based on GC consensus algorithm theory can
+realize horizontal expansion in throughput capacity after testing. It is driven
+by value and does not produce waste data and does not waste resources. As the
+underlying database, it can provide on-chain solutions for N types of
+industries, build rich block chain applications and improve the efficiency of
+multi-industries.</p> <p>  Keywords: Consensus algorithm, Blockchain, Delegation and Guarantee Liability
+Chain, GC consensus algorithm</p> <h2 id="chapter-1-introduction"><a href="#chapter-1-introduction" class="header-anchor">#</a> <strong>Chapter 1 Introduction</strong></h2> <p>  &quot;Consensus&quot; is a term full of philosophical significance. From the bartering of
+primitive times, to the issuing of money in the monetary age, even the rule of
+the regime is operated by consensus, so that people can participate in the
+system after reaching consensus.The robustness of the consensus determines the
+efficiency of the operation of the system. Consensus of blockchain refers to
+that each node in the network system reaches a consensus through software
+algorithm, which makes the blockchain system traceable, tamper-free,
+decentralized and other characteristics.The consensus algorithm based on
+entrustment and Guarantee agreement is inspired by the Taoist thought of &quot;law,
+heaven and earth&quot;, and it is applied to software design by observing the
+behavior of Entrust and Guarantee in human society, so as to realize efficient
+and safe application of blockchain.Because the design structure is similar to
+the social system, it can be different from the private chain and become the
+first public chain that can be regulated.</p> <p>  Assume that as the technology development of humans developed a &quot;CD&quot;, as big as
+a moon that everyone can see open, data storage, have enough storage unit, and
+each storage unit can be written only once, and repeated reading, people will
+open books recorded in the above, everyone can participate in accounting, which
+implements a everyone involved, data can be traced, and tamper-resistant
+completely reliable block chain system.Since every person in this blockchain
+system has the right to keep accounts and the data stored in it cannot be
+changed, it is in line with the characteristics of decentralized accounting,
+traceability of ledger data and non-tampering.And there is no way to cheat to
+break these rules, it can be called a completely reliable blockchain system.</p> <p>  At present, only through the consensus mechanism can the characteristics of
+decentralized accounting, traceability of data and non-tampering be achieved in
+the community system. However the present most block chain system is not fully
+reliable, such as, based on the POW, DPOW, DPOS, authority certificate,
+certificate of weight consensus algorithm, such as research and development of
+block chain system are achieved based on the limited conditions of data
+consistency, when an attacker in the hold a certain amount of resources can be
+launched &quot;attack&quot; double pay, damage the interests of the recipient's damaged
+this consistency.In the real-name system, such behavior is called &quot;overspending&quot;
+and the payee can be held responsible without the physical system. In the
+non-real-name system, the payee's loss cannot be recovered.These requirements
+include that a single node cannot have more than 51 percent of the network's
+computing power (in fact, holding 20 percent of the network's computing power
+can successfully launch a double-payment attack), that 50 percent of the nodes
+are loyal and reliable, and so on.The reality may be more pessimistic, as the
+number of online nodes that play a consensus-playing role is usually smaller
+than the total number of nodes, and the holders of node resources &quot;vary widely
+in wealth&quot;.To sum up the objective conditions, it is concluded that the cost of
+launching consensus attack is far less than the theoretical value.This is one of
+the main reasons for the development of blockchain technology.</p> <p>  Consensus mechanisms are driven by computationally expensive PoW consensus
+algorithms (commonly known as &quot;mining&quot;) such as Bitcoin. Although PoW is a
+pioneer of consensus algorithms, it is wasteful and TPS is too low to extend
+rich upper-level applications.Because the above 2 features are not up to
+standard, it is not recommended.In addition, the security of the algorithm
+through proof of stake depends on the honesty of the majority of nodes. In
+today's world where the resources of all parties are uneven and the gap is
+large, its security is obviously a &quot;heavy task&quot;.GC consensus algorithm based on
+guarantee arbitration mechanism can completely avoid this attack.This paper
+describes how the Delegated Guaranteed Proof Conconsensus Algorithm is a
+value-driven, high-TPS, security independent of node honesty, computational
+power, and fully reliable blockchain system by doing valuable work.</p> <h2 id="chapter-2-gc-consensus-algorithm"><a href="#chapter-2-gc-consensus-algorithm" class="header-anchor">#</a> <strong>Chapter 2: GC consensus algorithm</strong></h2> <p>  This chapter describes GC consensus algorithm through the chain of
+responsibility to implement the monitoring mechanism, arbitration mechanism, to
+realize the decentralization of blockchain, data can not be tamper with the
+characteristics.</p> <h3 id="_2-1-consensus-unit"><a href="#_2-1-consensus-unit" class="header-anchor">#</a> <strong>2.1 Consensus Unit</strong></h3> <p>  GC Consensus Unit is divided into four categories: Client, Guarantor, Top Node
+and Aggregate Node.Each consensus unit is responsible for different algorithms,
+so that each node can supervise each other and ensure that the overall data is
+honest and reliable and can not be tampered with.</p> <h3 id="_2-1-1-the-principal"><a href="#_2-1-1-the-principal" class="header-anchor">#</a> <strong>2.1.1 the principal</strong></h3> <p>  The client is the producer of the data, and the data signed by the client can
+only be recognized by the GC blockchain system after being guaranteed by the
+guarantor, so the client must have a fixed guarantor to cooperate with the
+normal business exhibition. In this paper, the guarantor of the client is
+described as &quot;the account holder&quot;.Client can not arbitrarily transfer accounts,
+transfer application need to freeze after a certain period to take effect, this
+time setting is flexible, at the top of the real-name system of chain blocks or
+node has a very high credibility, such as the functions of the government units,
+can shorten the freeze time, or even cancel the freezing time. The freeze time
+considerations are based on the system security Settings, and the release of the
+freeze depends on the completion of the aggregation node execution.</p> <h3 id="_2-1-2-the-guarantor"><a href="#_2-1-2-the-guarantor" class="header-anchor">#</a> <strong>2.1.2 the guarantor</strong></h3> <p>  The name of guarantor means that the data produced by the guarantor is true and
+effective and has not been tampered with.The trustor can freeze the assets of
+the account and make a public statement as the guarantor to provide guarantee
+services. The guarantee ability depends on the quantity of the frozen
+assets.When a guarantor receives a large transaction from the principal that
+exceeds its guarantee capacity, it can choose other guarantor nodes to form a
+joint guarantee.Acceptance of the offer of guarantee by other guarantors is not
+mandatory. It is customized by individual terminals. For example, it can be set
+to accept a certain guarantor, or it must be signed and approved by top nodes to
+form joint guarantee, etc.</p> <h3 id="_2-1-3-top-node"><a href="#_2-1-3-top-node" class="header-anchor">#</a> <strong>2.1.3 Top Node</strong></h3> <p>  The top node selects the node with the most guarantee ability in the whole
+network, and the guarantor role is responsible for it, but it is only
+responsible for honestly recording the sequence of the payment chain sent by all
+the guarantor nodes, and providing inquiry service to other guarantors.The top
+node is an important basis for the receiver node to judge whether the limit of
+the guarantor is overspent and whether the payment chain is legal or not.</p> <p>  When a blockchain is initialized, the top node is the first block. The validity
+of the signature data of the top node is monitored by the way of periodic
+&quot;meeting communication&quot; of the nodes. If the top node cheating, other nodes will
+abrogate and re-select the top node by proof.</p> <h3 id="_2-1-4-aggregate-nodes"><a href="#_2-1-4-aggregate-nodes" class="header-anchor">#</a> <strong>2.1.4 Aggregate nodes</strong></h3> <p>  Aggregate nodes are the nodes used to aggregate payment chains and issue
+arbitration claims.When the payment chains are aggregated, cheating nodes will
+show &quot;overspend&quot; conflicts. When the node obtains the conflicting payment
+chains, it will initiate arbitration and deduct the guarantor deposit to fill
+the overspend bill.If the top node is found cheating, the deposit of the top
+node will be deducted and its account will be frozen, and then the node with the
+most guarantee ability will be re-selected as the top node.If there is no
+cheating, all payment chains will be signed by the guarantor as an unalterable
+fact.</p> <p>  Aggregation nodes are the ultimate safeguard against cheating, and the frequency
+with which they are executed is a key parameter for achieving a public ledger
+that is close to completely reliable.</p> <p>  Assume that V represents reliability over a period of time (100% is completely
+reliable), that the aggregate data is executed at an interval of t, and that b
+is the probability of cheating during this period (the value at risk).Is:</p> <p>V of 1 is equal to B over T</p> <p>  After this time point, the payee will confirm the payment operation, the risk
+value will be reduced to 0, that is, it has been recognized as a fact that will
+not be tampered with.The concept of entrustment and guarantee is that signing
+bills means responsibility. Therefore, due to the existence of supervision, the
+real-name blockchain system can improve the transaction efficiency without
+waiting for the completion of aggregation to confirm the transaction, because
+individuals who overspend will be recovered, and units who overspend will be
+held accountable. In the real-name system, the statutory supervision will be the
+node with the most guarantee ability, that is, as the top node.</p> <p>  Given the current hardware and software environment, aggregating data too
+frequently means overloading the system.Affects the overall throughput of the
+system. Under the real-name system, in view of the fact that cheating is
+accountability for cost and transaction value under the consideration of small
+can need not consider waiting to complete the aggregated data to confirm again,
+need only personal terminal according to the approved third party reference node
+to provide risk assessment and determine whether to deal, for the big deals,
+waiting time of polymerization can be accepted by people.</p> <h3 id="_2-2-gc-algorithm-flow"><a href="#_2-2-gc-algorithm-flow" class="header-anchor">#</a> <strong>2.2 GC algorithm flow</strong></h3> <p>  Spending side flow diagram, as shown in figure 2-1 assumes that the signature of
+the client A launched A to D pay the bill, client will sign the bill sent to A
+system, the guarantor node C guarantor after C get bills can verify the
+signature is correct, A principal balance is enough, after the basic conditions
+to meet will sign the bill after packaged as containing the bill sponsor A chain
+of payment data transfer payment notice of (A) to D account guarantor B, B
+confirm C guarantee ability, The payment chain is then transmitted to the
+guarantor node in the blockchain network with the strongest recognized guarantee
+capacity to sign (the top node) to confirm that the payment chain is up to date
+and that C's guarantee capacity is greater than the amount of this transaction.</p> <h3 id="_2-1-flow-chart-of-the-client-of-the-spender"><a href="#_2-1-flow-chart-of-the-client-of-the-spender" class="header-anchor">#</a> 2-1 Flow chart of the client of the spender</h3> <p>  The payee D plays A supervisory role in the payment process of A, which is
+explained in detail in the section of &quot;Arbitration mechanism to achieve
+avoidance of double payment&quot;.If the payee thinks the payment terms are not
+credible, it can cancel the transaction by giving up the payment.The signed
+order to abandon this transaction will first be sent to C, the account holder of
+A, and then C will be responsible for synchronizing to the top node to cancel
+the guarantee limit occupied in this transaction.</p> <h3 id="_2-2-schematic-diagram-of-receiver-client"><a href="#_2-2-schematic-diagram-of-receiver-client" class="header-anchor">#</a> 2-2 Schematic Diagram of Receiver Client</h3> <h3 id="_2-2-1-pay-chain"><a href="#_2-2-1-pay-chain" class="header-anchor">#</a> <strong>2.2.1 pay chain</strong></h3> <p>  The payment chain is a detailed payment list of the payer sorted by timestamp,
+as shown in the figure below:</p> <p>Figure 1-1 Payment Chain</p> <h3 id="_2-2-2-chain-of-responsibility"><a href="#_2-2-2-chain-of-responsibility" class="header-anchor">#</a> <strong>2.2.2 chain of responsibility</strong></h3> <p>  The responsibility chain can be fed back from the signature on the revenue and
+expenditure chain, which serves as an important basis for the &quot;arbitration
+mechanism&quot;, as shown in Figure 1-1:</p> <p>Figure 1-1 Chain of Responsibility</p> <h3 id="_2-3-arbitration-mechanism-to-achieve-reliable-blockchain"><a href="#_2-3-arbitration-mechanism-to-achieve-reliable-blockchain" class="header-anchor">#</a> <strong>2.3 Arbitration mechanism to achieve reliable blockchain</strong></h3> <p>  The arbitration mechanism of GC consensus algorithm can avoid the double payment
+loophole.Theoretically any node in the liability chain may &quot;mutiny&quot;, but the
+arbitration mechanism can protect the rights and interests of the payee.When the
+most secure top node &quot;defections&quot; will cause the &quot;payer&quot; to pay more bills than
+it can afford.In the case that the total assets of the blockchain remain
+unchanged and the non-real name system means that the payee will lose interests.
+Arbitration mechanism oriented results have three kinds: the abandonment of the
+transaction, the payee 100 percent loss; If the arbitration is successful, the
+payee will not lose. Arbitration is successful, but after deducting the
+liability of the guarantee money is still not enough to fill up the cheating
+part of this transaction.</p> <p>  The cost of cheating is extremely high, and whether or not the cheating is
+successful, when the cheating node generates cheating data that is detected and
+arbitrated by other nodes means the risk of losing the deposit and freezing the
+account. In the real name system, there is even legal liability.</p> <h3 id="_2-3-1-mutiny-of-the-payor-s-guarantor"><a href="#_2-3-1-mutiny-of-the-payor-s-guarantor" class="header-anchor">#</a> <strong>2.3.1 &quot;Mutiny&quot; of the Payor's Guarantor</strong></h3> <p>  A &quot;defection&quot; by a payer's guarantor is when a payer's bill overruns, but the
+payer's account guarantor signs the payment chain to trick the payee into
+accepting the transaction by hiding the disbursement or falsifying the income.</p> <p>  This cheating only makes sense if the overspend is greater than the guarantee
+plus the payer's balance.Otherwise, the arbitration mechanism will not only
+deduct the payer's balance and guarantee amount, but also lock up the account.</p> <p>  It is very risky for the payee to accept this bill without verifying the balance
+guaranteed by the payer at the top node.If the other party cheats, the unfilled
+part of the arbitration mechanism will be lost.The reason why GC consensus
+algorithm does not enforce the verification of top-level nodes is to give a more
+flexible experience to the payment network and realize the &quot;check function&quot;.
+Whether the final check is valid depends on the reality.</p> <h3 id="_2-3-2-mutiny-of-top-node"><a href="#_2-3-2-mutiny-of-top-node" class="header-anchor">#</a> <strong>2.3.2 &quot;Mutiny&quot; of Top Node</strong></h3> <p>  By providing false pay top node chain sequence the payer guarantor pay nodes
+have the ability to appear to be legitimate, but because the payee is the top
+node credit payer's important basis, so the top node cheating data will conflict
+with block chain network with a node in the data, found cheating behavior is one
+of the important parameters to avoid loss of time.</p> <p>  Again, cheating only makes sense if the overspend is greater than the guarantee
+amount + the payers' balance + the top node's guarantee amount.Otherwise, the
+arbitration mechanism will not only deduct the payer's balance and guarantee
+amount, but also lock the account of the top node, and then aggregate the data
+of the whole network to select the new node with the highest guarantee amount.</p> <h2 id="chapter-3-blockchain-system-design-and-implementation"><a href="#chapter-3-blockchain-system-design-and-implementation" class="header-anchor">#</a> <strong>Chapter 3 Blockchain System Design and Implementation</strong></h2> <p>  Blockchain is a term used in information
+technology.<a href="https://baike.baidu.com/item/%E4%BF%A1%E6%81%AF%E6%8A%80%E6%9C%AF/138928" target="_blank" rel="noopener noreferrer">https://baike.baidu.com/item/信息技术/138928<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>In
+essence, it is a shared database, the data or information stored in it, has the
+characteristics of &quot;non-forgeable&quot;, &quot;whole-process trace&quot;, &quot;traceable&quot;, &quot;open
+and transparent&quot;, &quot;collective maintenance&quot;,
+etc.<a href="https://baike.baidu.com/item/%E6%95%B0%E6%8D%AE%E5%BA%93/103728" target="_blank" rel="noopener noreferrer">https://baike.baidu.com/item/数据库/103728<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>Based on
+these characteristics, blockchain technology has laid a solid foundation of
+&quot;trust&quot;, created a reliable &quot;cooperation&quot; mechanism, and has a broad application
+prospect.<a href="https://baike.baidu.com/item/%E5%8C%BA%E5%9D%97%E9%93%BE%E6%8A%80%E6%9C%AF/23686191" target="_blank" rel="noopener noreferrer">https://baike.baidu.com/item/区块链技术/23686191<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p>  Blockchain is a social application. The application should implement the current
+mainstream devices, mobile terminal and server terminal. The basic application
+of mobile terminal realizes the payment function, and the data transmission
+interface should be implemented to facilitate the access of other upper-level
+applications. The server side covers the functions of the mobile end through the
+CS architecture and realizes the components of the guarantor component, top node
+and aggregate node.</p> <h3 id="_3-1-mobile-terminal-demand-analysis"><a href="#_3-1-mobile-terminal-demand-analysis" class="header-anchor">#</a> <strong>3.1 Mobile terminal demand analysis</strong></h3> <p>  Currently, handheld devices do not have fixed IP addresses and high computing
+power. In the GC consensus algorithm designed blockchain, the components of the
+Guarantor need fixed IP addresses and high computing power, so personal handheld
+devices are only suitable for implementing the functions of the Client.</p> <h3 id="_3-1-1-implementation-module"><a href="#_3-1-1-implementation-module" class="header-anchor">#</a> <strong>3.1.1 Implementation module</strong></h3> <p>(1) Signature module</p> <p>Provide signature of client's bill.</p> <p>(2) Server-side function call module</p> <p>By calling the server HTTP interface, you can use the server's open
+functionality, such as security analysis, billing guarantee, data storage, etc.</p> <h3 id="_3-2-server-side-requirements-are-analyzed"><a href="#_3-2-server-side-requirements-are-analyzed" class="header-anchor">#</a> <strong>3.2 Server-side requirements are analyzed</strong></h3> <p>  The server implements the ability of the guarantor, the top node, and the
+aggregate node to provide services to the principal.</p> <p>  There is an investment cost on the server side. It is necessary to motivate
+people to participate in the consensus mechanism and maintain the decentralized
+community. This is also the reason why tokens are often issued with the public
+chain. However, the author believes that issuing money is a government action,
+and the random issuing of money by individual organizations out of thin air is a
+kind of behavior to disrupt the market.</p> <p>  The amount of the ledger in the GC consensus algorithm can be used as tokens
+like any other blockchain, and the GC chain network sets up &quot;mining
+pools.&quot;Guarantor nodes provide guarantee services, commonly known as &quot;mining&quot;,
+and the blockchain network will be distributed according to the guarantor
+services. The Guarantor will continue to operate on a commission basis until the
+mine pool is emptied.</p> <h3 id="_3-2-1-implementation-module"><a href="#_3-2-1-implementation-module" class="header-anchor">#</a> <strong>3.2.1 Implementation module</strong></h3> <p>(1) Signature module</p> <blockquote><p>Provide guarantee service signature.</p></blockquote> <ol><li><p>Guarantee Service Module</p> <p>Provide guarantee services.</p></li> <li><p>The supervision of the module</p> <p>Provide transaction analysis to monitor if any transactions related to you
+are being cheated. At the same time, provide interfaces for clients to call
+or provide services to third parties.</p></li> <li><p>The module</p> <p>Participate in arbitration to realize the accountability and punishment of
+cheating.</p></li></ol> <h3 id="_3-2-2-interface-to-be-implemented"><a href="#_3-2-2-interface-to-be-implemented" class="header-anchor">#</a> <strong>3.2.2 Interface to be implemented</strong></h3> <p>  In order to realize the function that the client can call the third party server
+freely, all the interfaces of the server need to support cross-domain
+access.This is conducive to the realization of multi-terminal confirmation of
+whether the guarantee is reliable.</p> <p>(1) Account opening interface</p> <p>Provide the client account, cooperate with the transfer of account service.</p> <ol><li>Delegate interface</li></ol> <p>Provide guarantee service for client's bill.</p> <ol><li>The joint interface</li></ol> <p>  When the guarantor is unable to guarantee or wants to share the transaction
+risk, it can link other guarantor nodes that support the joint guarantee service
+to jointly provide guarantee service for the principal.</p> <ol><li>Aggregate interface</li></ol> <p>  A series of interfaces that interact with other nodes when the aggregation
+algorithm is executed.</p> <ol><li>The supervision of the interface</li></ol> <p>  Provides monitoring services for other clients, especially mobile end points
+that cannot be aggregated.</p> <ol><li>The interface</li></ol> <p>  It can provide monitoring services for other clients, especially mobile terminal
+nodes that cannot participate in arbitration.</p> <h3 id="_3-2-3-support-analysis"><a href="#_3-2-3-support-analysis" class="header-anchor">#</a> <strong>3.2.3 Support analysis</strong></h3> <p>  Monitoring mechanism in GC consensus algorithm Arbitration mechanism guarantees
+data not to be tampered with.Community mediation requires data interaction, a
+uniform data transfer specification and consensus conditions.</p> <h3 id="_3-2-4-interface-specification-analysis"><a href="#_3-2-4-interface-specification-analysis" class="header-anchor">#</a> <strong>3.2.4 Interface specification analysis</strong></h3> <p>  HTTP is the most widely used network communication protocol at present. The
+interactive interface of GC chain is based on HTTP communication and supports
+cross-domain access, using JSON as the data format.The interface uses a RESTful
+style that is easy for developers to understand.</p> <h3 id="_3-1-5-module-analysis"><a href="#_3-1-5-module-analysis" class="header-anchor">#</a> <strong>3.1.5 Module analysis</strong></h3> <p>(1) Signature module:</p> <p>  The signature module defines the unified data signature and data signature
+verification specification of the system. The private key is used to sign the
+data and the public key is used to verify whether the data is signed by the
+private key. The public key as the wallet address and the private key are
+one-to-one correspondence, and the user identity can be bound in the real-name
+blockchain system.</p> <ol><li>Guarantee service module:</li></ol> <p>  Guarantee service module means to provide guarantee service to other nodes,
+which requires a fixed network access address and an interface for the client to
+open an account.</p> <ol><li>Entrusted business module:</li></ol> <p>  The entrustment business module can identify the data submitted by the
+entrustor, verify the signature through the signature module, and then
+automatically find the account opening party of the entrustor to submit the
+data.</p> <p>  The principal can obtain the progress and result of the guarantor's transaction
+in real time. The revenue-side trustor can check in real time through the top
+node whether the payer has sufficient balance to pay the bill and whether the
+payer's guarantor has the guarantee capacity to ensure the legality of the
+transaction. At the same time, the revenue client can query the aggregated data
+through any network node in the blockchain. If it is found that the payer
+overspends and the top node provides false reference data for this transaction,
+the problem billing data can be submitted to initiate arbitration.</p> <ol><li>Monitoring module:</li></ol> <p>  The monitoring module is responsible for calculating the validity of the
+client's payment chain. The first dimension of monitoring is to check whether
+payers are overspending by requesting the top-level node to retrieve the
+principal payment chain sorted by the top-level node.The second dimension is to
+check whether there is any conflicting data in the reference data returned by
+the top-level node after data aggregation. If the existence means that a certain
+bill has the risk of invalidation, arbitration can be initiated immediately to
+recover the loss.</p> <ol><li>Arbitration module:</li></ol> <p>  The arbitration module plays a role when the monitoring module finds out the
+conflicting data of the payment chain. When the payment chain of a client is
+found to be overspent after merging with another payment chain, arbitration can
+be initiated, and the deposit of a client is deducted and the time set by the
+account holder is frozen as a punishment. If the deposit of the top node is not
+enough to pay the overspent part, check whether the top node signs the guarantee
+amount of the top node. If it is wrong, the top node is judged to be cheating.
+The deposit is deducted from the top node to pay the overspent part, and the top
+node is discarded and selected again.Assuming the bill is not signed by the top
+node, the unfilled overspend in the payee's bill will be lost.</p> <h3 id="_3-3-architectural-design"><a href="#_3-3-architectural-design" class="header-anchor">#</a> <strong>3.3 Architectural Design</strong></h3> <p>  A single node is a CS architecture, and the S-side can be clustered to improve
+system throughput.But block chain community is used, so I said its overall
+architecture is community structure, in the term are no community in the design
+of software architecture, but with the development of artificial intelligence, I
+believe that the concept of community architecture will take the lead by block
+chain technology in software design, architecture in the future I will write an
+essay to discuss community standards and application scenarios. The purpose of
+this paper is to describe blockchain with community architecture to avoid
+readers' thinking blind spots and make it easier to understand the cooperative
+principle of GC consensus algorithm.</p> <h3 id="_3-3-1-community-architecture"><a href="#_3-3-1-community-architecture" class="header-anchor">#</a> <strong>3.3.1 Community architecture</strong></h3> <p>  In order to better describe the system architecture principle of GC chain, the
+term &quot;community architecture&quot; is used in this paper.In software design, each
+unit can be a complete individual, but when combined together can do different
+things to achieve a feature of the system as a whole. Such an architecture is
+called a community architecture. This article makes special explanation on the
+implementation of GC chain mobile terminal, because considering the
+characteristics and development cost of mobile terminal, mobile terminal does
+not develop software that independently realizes all functions, but the C
+terminal of CS architecture can be mobile terminal.That is, C terminal can call
+S terminal to achieve all functions.Users with S-side resources can provide
+C-side users with security analysis, aggregated queries, data hosting, and
+more.Thus, ecological applications based on S end are extended. For example, S
+end of GC chain provides copyright protection services for other users, while C
+end only needs to transmit data to S end, and S end will upload the data.</p> <h3 id="_3-3-2-system-architecture"><a href="#_3-3-2-system-architecture" class="header-anchor">#</a> <strong>3.3.2 System architecture</strong></h3> <blockquote><p>As shown in Figure 1-1 system architecture, a complete blockchain node
+includes the presentation layer, application layer, consensus layer,
+information storage layer, and user terminal device system layer.</p></blockquote> <p>Figure 1-1 System architecture</p> <h3 id="_3-3-3-data-model"><a href="#_3-3-3-data-model" class="header-anchor">#</a> <strong>3.3.3 Data model</strong></h3> <p>  As shown in Figure 1-1, the bills issued by the principal's guarantor are the
+basic information of one link in the payment chain. The payment chain of the
+principal is linked together by the payment bills of the principal according to
+the time stamp submitted to the top node.The top node signs the payment chain,
+indicating that the top node has reviewed the payment chain order submitted by
+the guarantor. And show it to the other nodes in its entirety.</p> <p>Figure 1-1 Bills issued by the principal's guarantor</p> <h3 id="_3-3-4-adoption-of-technology"><a href="#_3-3-4-adoption-of-technology" class="header-anchor">#</a> <strong>3.3.4 Adoption of technology</strong></h3> <p>  Take part in the maintenance of consensus in the terminal block chain system as
+the core, divided into two classes of equipments in the mainstream of mobile
+terminal and computer, considering the current network deployment and equipment
+operation ability, the mobile end without fixed IP and public capacity, and is
+not suitable for large data processing, so not suitable for single machine
+realize the function of the principal, but can be used as a server-side Windows
+or single machine can realize the function of the client.The computer side is
+equivalent to the server side which can connect to the public network as the
+server, so the guarantor role and the client role need to be realized.</p> <p>  UniApp technology is a framework with code supporting multiple terminals and
+rich UI components. In terms of development cost and function realization, it is
+the only choice for mobile terminal development.This demand will be based on
+UniApp framework to develop and implement GC application in the APP end.</p> <p>  Java is suitable for distributed service development, and its cross-platform
+capability can reduce development costs, so use Java development computer side
+to achieve the role of guarantor and client.On the mobile end, Android
+development technology and IOS development technology are used to realize the
+client role.</p> <h3 id="_3-4-algorithm-design"><a href="#_3-4-algorithm-design" class="header-anchor">#</a> <strong>3.4 Algorithm Design</strong></h3> <p>  Unified algorithm is needed in the whole server mobile node design to achieve
+overall consistency and synergistic interaction.</p> <p>  The following are the standard algorithms that must be used to program an GC
+chain in any language.</p> <h3 id="_3-4-1-asymmetric-encryption-algorithm"><a href="#_3-4-1-asymmetric-encryption-algorithm" class="header-anchor">#</a> <strong>3.4.1 Asymmetric encryption algorithm</strong></h3> <p>  Asymmetric encryption algorithms require two keys: the PUBLICKEY and the
+PRIVATEKEY.<a href="https://baike.baidu.com/item/%E5%85%AC%E5%BC%80%E5%AF%86%E9%92%A5/7453570" target="_blank" rel="noopener noreferrer">https://baike.baidu.com/item/公开密钥/7453570<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>A
+public key is paired with a private key. If the public key is used to encrypt
+data, only the corresponding private key can be used to decrypt it. Because
+encryption and decryption use two different keys, this algorithm is called
+asymmetric encryption algorithm. The basic process of the asymmetric encryption
+algorithm to realize the exchange of confidential information is as follows:
+Party A generates a pair of keys and discloses the public key, and other roles
+(Party B) who need to send information to Party A encrypt the confidential
+information using the key (Party A's public key) before sending it to Party
+A;<a href="https://baike.baidu.com/item/%E5%AF%86%E9%92%A5/101144" target="_blank" rel="noopener noreferrer">https://baike.baidu.com/item/密钥/101144<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>Party A then decrypts
+the encrypted information with its own private key. On the contrary, when Party
+A wants to reply Party B, it encrypts the data using Party B's public key, and
+similarly, Party B uses its own private key to decrypt the data.</p> <p>  On the other hand, Party A may use its private key to sign the Confidential
+Information before sending it to Party B; Party B shall use Party A's public key
+to check the signature of the data sent back by Party A.</p> <h3 id="_3-4-2-vertex-selection-algorithm"><a href="#_3-4-2-vertex-selection-algorithm" class="header-anchor">#</a> <strong>3.4.2 Vertex selection algorithm</strong></h3> <p>  GC chain stipulates that the guarantor node with the highest guarantee amount
+and no breach of trust in the data set is the top node, referred to as the
+apex.If the top node cannot provide service due to network or hardware reasons,
+the top node shall be re-elected. If the service is restored, the top node can
+apply for returning to the top node.</p> <p>Cannot serve conditions for electing other top nodes:</p> <p>  No result returned within 10 minutes is recorded as one failure. If the number
+of failures of the same node is more than 6 times within an hour, the report can
+be reported in the next aggregation process, and the weight of the report is the
+processing ability.If the cumulative weight of the report exceeds half of the
+total weight in the whole network, the report is successful and the top node is
+re-elected.</p> <h3 id="_3-4-3-aggregation-node-selection-algorithm"><a href="#_3-4-3-aggregation-node-selection-algorithm" class="header-anchor">#</a> <strong>3.4.3 Aggregation node selection algorithm</strong></h3> <p>  Each node can initiate an aggregation request, but this behavior needs to be
+controlled so that the entire system does not become overloaded frequently.</p> <p>(1) Don't reject data you care about</p> <p>  From the analysis of the aggregate demand, the aggregate data is to monitor
+whether there is cheating at the top nodes, while the guarantor is actually more
+concerned about the data of the bill principals with their own economy. So a
+single node in the GC chain that initiates an aggregation request must first
+publish the list of interested clients.When other nodes in the system receive an
+aggregation request from a delegate of common interest, they &quot;cannot refuse
+(there is no reason to refuse)&quot; to communicate all the data.</p> <p>(2) Do not reject the concerned data, and choose the node with the &quot;strongest
+aggregation ability&quot; as the center for data delivery</p> <p>  In order to &quot;nip it in the bud,&quot; each node tends to want to own the entire bill.
+But assuming that the system has too many nodes, or that a hacker causes too
+many nodes to initiate an aggregation request, satisfying the aggregation
+request of all the nodes means that the load on each node in the system is
+extremely high and wasteful.</p> <p>  In order to solve this problem, we require the node to not only publish the
+relevant data of the client that it cares about, but also publish the data
+aggregation of its guarantee when it initiates the aggregation request. The
+system sets a certain time interval to consider the aggregation complete.</p> <p>  Because the &quot;care&quot; cascade exists, it means that the aggregation request is made
+and the number of aggregation nodes that you care about varies.Here, the node
+with the largest number of aggregation nodes is selected as the node with the
+&quot;strongest aggregation capability&quot;.</p> <ol><li>Data security</li></ol> <p>  Since the ability to aggregate is strongest and predictable, will the nodes with
+the strongest ability to aggregate be turned against? This is a problem that can
+be solved 100 percent. A block of data aggregated from any node has the
+signature of that node. If tampered, it will be &quot;noticed&quot; by the node that
+synchronizes the data at the first time, and the node will be added to the
+blacklist. When the data is aggregated again, the blacklisted node will be
+permanently removed from the aggregate node.</p> <ol><li>Be responsible for relevant data</li></ol> <p>  When the aggregation is initiated, no matter whether other nodes ask or actively
+participate in the aggregation, they shall submit honest payment chain data
+guaranteed by themselves. If they are not honest, the part hidden by themselves
+will not be accepted by the public, and the part contradictory with other nodes
+will be held responsible and punished.Therefore, each node will actively and
+honestly publish its own data.</p> <h3 id="_3-5-module-design"><a href="#_3-5-module-design" class="header-anchor">#</a> <strong>3.5 Module design</strong></h3> <h3 id="_3-5-1-signature-module"><a href="#_3-5-1-signature-module" class="header-anchor">#</a> <strong>3.5.1 Signature module</strong></h3> <p>  GC chain consensus algorithm selects ECC algorithm (elliptic curve algorithm) as
+the public and private key of asymmetric encryption algorithm.The reason for
+choosing ECC is that ECC is the encryption algorithm with the highest crack
+difficulty at present.</p> <p>  Elliptic encryption algorithm (ECC) is a public key encryption scheme, which was
+first proposed by Koblitz and Miller in 1985. Its mathematical basis is the
+difficulty of calculating elliptic discrete logarithms on Abel addition groups
+using rational points on elliptic
+curves.<a href="https://baike.baidu.com/item/ECC/850480" target="_blank" rel="noopener noreferrer">https://baike.baidu.com/item/ECC/850480<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a><a href="https://baike.baidu.com/item/%E5%85%AC%E9%92%A5%E5%8A%A0%E5%AF%86%E4%BD%93%E5%88%B6/7080546" target="_blank" rel="noopener noreferrer">https://baike.baidu.com/item/公钥加密体制/7080546<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a><a href="https://baike.baidu.com/item/%E6%9C%89%E7%90%86%E7%82%B9/11033217" target="_blank" rel="noopener noreferrer">https://baike.baidu.com/item/有理点/11033217<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a><a href="https://baike.baidu.com/item/%E7%A6%BB%E6%95%A3%E5%AF%B9%E6%95%B0/4538780" target="_blank" rel="noopener noreferrer">https://baike.baidu.com/item/离散对数/4538780<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>Public
+key cryptosystems can be divided into three categories according to the
+difficult problems they are based on: large prime decomposition problem,
+discrete logarithm problem and elliptic curve
+problem.<a href="https://baike.baidu.com/item/%E7%A6%BB%E6%95%A3%E5%AF%B9%E6%95%B0/4538780" target="_blank" rel="noopener noreferrer">https://baike.baidu.com/item/离散对数/4538780<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>The
+elliptic curve class is sometimes classified as the discrete logarithm
+class.Reasons for selection:</p> <p>High safety</p> <p>  Some studies have shown that the 160-bit elliptic key has the same security as
+the 1024-bit RSA key.</p> <p>Fast processing speed</p> <p>  In the private key encryption and decryption speed, ECC algorithm is faster than
+RSA, DSA.</p> <p>  Small storage footprint.</p> <p>  Low bandwidth requirements.[2]</p> <p>  Reference source: Baidu Baike - Elliptic Encryption Algorithm</p> <h3 id="_3-5-2-guarantee-service-module"><a href="#_3-5-2-guarantee-service-module" class="header-anchor">#</a> <strong>3.5.2 Guarantee service module</strong></h3> <p>  Guarantee service is divided into two parts, one is to receive the bill
+signature of the client, the other is to accept the payment chain of other
+guarantors to form a joint guarantee.The second guaranteed node can be
+optionally turned on or off.</p> <p>Accepting Client's Bills:</p> <p>  Calculate the balance of the client, and sign and guarantee the bill when the
+balance is sufficient.</p> <p>Accepts payment chains from the principal sent by other guarantors:</p> <p>  According to the parameter setting of the node: simply check the payment chain
+of the client and judge the sufficient balance to sign and guarantee; Guarantee
+is signed by the top node after signature; The data is aggregated and then
+signed for guarantee. Risk levels go down sequentially, but so does throughput
+efficiency.</p> <h3 id="_3-5-3-entrusted-business-module"><a href="#_3-5-3-entrusted-business-module" class="header-anchor">#</a> <strong>3.5.3 Entrusted business module</strong></h3> <p>  The client gets the payment chain from the guarantor and then calculates the
+balance to the presentation layer.To avoid wasting computational resources, a
+lock service operation is performed when the client submits multiple invalid
+bills.In order to avoid this situation, the entrusting business module will
+actively remind the user that the wallet balance is 0 and do not try to issue a
+bill.</p> <p>Issue bills:</p> <p>  As shown in figure 1-1, the client is responsible for the bill issued, which is
+similar to a bank check.</p> <p>Figure 1-1. Issuing bills</p> <h3 id="_3-5-4-monitoring-module"><a href="#_3-5-4-monitoring-module" class="header-anchor">#</a> <strong>3.5.4 Monitoring module</strong></h3> <p>  After the user's blockchain wallet receives the payment, it will check whether
+the payer's payment chain has overspent. Overspending means that the payer and
+the guarantor are cheating. If the top-level node signs, it means that the
+top-level node is also cheating. At this time, the cheating information can be
+submitted to the arbitration module for processing.</p> <p>After aggregating the data, the Guarantor will check whether the payment chain
+including the Guarantor node and the Guarantor node opening an account at the
+current node is overspent, and then do the same as above.</p> <h3 id="_3-5-5-arbitration-module"><a href="#_3-5-5-arbitration-module" class="header-anchor">#</a> <strong>3.5.5 Arbitration module</strong></h3> <p>  The mediation transaction will begin immediately after receiving the mediation
+initiated by the monitor module.</p> <p>Guarantor cheats:</p> <p>  Guarantor cheating means that data does not pass the signature, the top node at
+this time only need to issue the bill submitted to the arbitration module at the
+top of the node to recover losses, the top node after receiving problem bill
+will be deducted after confirm true bills the decision of the security deposit,
+other nodes synchronize data synchronization when the decision and approval.
+Unfilled parts will be lost.</p> <p>Top Node Cheating:</p> <p>  The top node cheating by polymerization of the transaction, the principal or the
+guarantor after submit the top node cheating evidence, all nodes in the same
+rules when decide to deduct the bill sponsor deposit, if lack of bill amount
+will be added to the top node deposit, the abolition of the top node at the same
+time, according to the vertices selection algorithm to select the new node at
+the top.Unfilled parts will be lost.</p> <h3 id="_3-6-mobile-terminal-development-and-implementation"><a href="#_3-6-mobile-terminal-development-and-implementation" class="header-anchor">#</a> <strong>3.6 Mobile terminal development and implementation</strong></h3> <p>  Both the client's business delegation and the maintenance of community
+architecture cannot be separated from network interaction. GC chain, in line
+with the principle of code reuse and low development cost, uses JSON formatted
+data body for data interaction, and the interface is realized in a RESTful
+style.</p> <h3 id="_3-6-1-signature-module-implementation"><a href="#_3-6-1-signature-module-implementation" class="header-anchor">#</a> <strong>3.6.1 Signature module implementation</strong></h3> <p>  In order to reduce the development cost, UNIAPP technology is used for Windows
+and data processing on the mobile terminal to realize the signature module and
+the entrusted business module, as well as the functions of calling other
+guarantor node supervision module and arbitration module.</p> <p>(1) Implementation of asymmetric encryption algorithm</p> <p>  Eosjs-ecc.js is a code library that uses js to implement elliptic curve
+encryption algorithms.The call ecc. RandomKey () randomly generates a public and
+private key pair. Since the key pair generated by default is too long for human
+eyes to recognize, a public key of 121 characters and a private key of 89
+characters can be generated after BASE64 encryption.The randomly generated
+public key can be applied to the guarantor to open an account and can be used as
+the wallet identity of GC chain.</p> <h3 id="_3-6-1-server-side-function-call-module"><a href="#_3-6-1-server-side-function-call-module" class="header-anchor">#</a> <strong>3.6.1 Server-side function call module</strong></h3> <p>(1) Implementation of entrusted business module</p> <p>  Use ECC to sign the bill as shown in Figure 1-1 and send it to the Guarantor for
+transaction.</p> <p>Figure 1-1. The client issues the bill</p> <ol><li><p>Data is stored</p> <p>The data storage module is used for the storage of payment chain and
+initialization parameters, and SQLLite is used. SQLLite is a relational
+database, which can well store the data of payment chain data structure.</p></li> <li><p>Transfer the trustor to monitor interface and arbitration interface</p></li></ol> <p>  The Ajax functionality of JS is adequate for the interactive capabilities of the
+call interface.Since the mobile terminal does not have fixed IP and low
+computing power, participation aggregation cannot be realized, but the mobile
+terminal can choose the guarantor to realize the functions of supervision module
+and arbitration module.</p> <h3 id="_3-7-server-side-implementation"><a href="#_3-7-server-side-implementation" class="header-anchor">#</a> <strong>3.7 Server-side implementation</strong></h3> <h3 id="_3-7-1-implementation-of-signature-and-delegation-business-module"><a href="#_3-7-1-implementation-of-signature-and-delegation-business-module" class="header-anchor">#</a> <strong>3.7.1 Implementation of Signature and Delegation Business Module</strong></h3> <p>  Java ScriptEngineManager is a JS engine implemented in Java that can call the
+Eosjs-ECC.js signature algorithm.Therefore, the signature and delegation
+business module developed by mobile terminal can be completely reused.</p> <h3 id="_3-7-2-guarantee-module-implementation"><a href="#_3-7-2-guarantee-module-implementation" class="header-anchor">#</a> <strong>3.7.2 Guarantee module implementation</strong></h3> <p>  The guarantee module verifies the balance after receiving the client's bill
+data. After the balance is sufficient, the bill signature will be packaged into
+a payment chain and sent to the receiver's guarantor.</p> <p>The data results of the bill signed by the guarantor are shown in Figure 1-1:</p> <p>Figure 1-1. Issue of bill by guarantor</p> <h3 id="_3-7-3-implementation-of-monitoring-module"><a href="#_3-7-3-implementation-of-monitoring-module" class="header-anchor">#</a> <strong>3.7.3 Implementation of monitoring module</strong></h3> <p>  Monitoring module to achieve their own and other people's billing data
+monitoring. The getTopSupervise(Blockchain) method is called to send the payment
+chain to the top node, and the top node signature returns whether the payment
+chain was signed by the top node and is not overspent.If you overspend, call the
+arbitration module to initiate arbitration. Call getUnisuoervise (Blockchain) to
+check if the payment chain in the aggregated data is valid.</p> <h3 id="_3-7-4-implementation-of-arbitration-module"><a href="#_3-7-4-implementation-of-arbitration-module" class="header-anchor">#</a> <strong>3.7.4 Implementation of arbitration module</strong></h3> <p>  Chats detected on non-top nodes call doToparBitRate (Blockchain) to arbitrate
+through the top node.If the top node is found to be involved in cheating, call
+DouniarBitRate (BlockChanin) to initiate the aggregation node arbitration
+transaction.After DouniarBitRate is initiated, it notifies other nodes in a
+recursive way. Once the evidence is confirmed, any guarantee service node will
+stop the guarantee service from participating in the arbitration affairs until
+the arbitration is completed.The mediation process starts after the execution of
+the aggregation algorithm and can be queried by any participating node in the
+whole network.</p> <h3 id="_3-8-performance-evaluation"><a href="#_3-8-performance-evaluation" class="header-anchor">#</a> <strong>3.8 Performance Evaluation</strong></h3> <p>  This performance evaluation includes two dimensions, namely, the horizontal
+expansion of hardware and software and the time consumed to reach the guarantee
+consensus. The main purpose of this evaluation is to verify whether the GC
+consensus algorithm can achieve the horizontal expansion of TPS.</p> <h3 id="_3-8-1-concept-of-performance-evaluation"><a href="#_3-8-1-concept-of-performance-evaluation" class="header-anchor">#</a> <strong>3.8.1 Concept of performance evaluation</strong></h3> <p>  The evaluation is based on the completely reliable method of GC consensus
+algorithm, that is, each transaction initiates the aggregate data request and
+waits for the completion of the aggregate to be a transaction
+completed.Theoretically, a completely reliable transaction needs to wait for the
+completion of the aggregate data, and the aggregation algorithm is actively
+executed by all nodes. That is to say, there is no direct transaction
+restriction in the consensus dimension, and the restriction comes from hardware
+and software indicators.</p> <h3 id="_3-8-2-purpose-of-performance-test"><a href="#_3-8-2-purpose-of-performance-test" class="header-anchor">#</a> <strong>3.8.2 Purpose of performance test</strong></h3> <p>  Test whether the system performance can be horizontally optimized under a small
+number of nodes and multiple nodes and different hardware indicators.</p> <h3 id="_3-8-3-test-environment"><a href="#_3-8-3-test-environment" class="header-anchor">#</a> <strong>3.8.3 Test environment</strong></h3> <p>(1) Server hardware configuration</p> <blockquote><p>2.3 GHZ dual-core CPU</p></blockquote> <blockquote><p>8 gb of memory</p></blockquote> <blockquote><p>1 m bandwidth</p></blockquote> <blockquote><p>Software environment</p></blockquote> <blockquote><p>LINUX</p></blockquote> <h3 id="_3-8-4-jmeter-test-indicators"><a href="#_3-8-4-jmeter-test-indicators" class="header-anchor">#</a> <strong>3.8.4 JMeter test indicators</strong></h3> <p>(1) Averge/ms: average response time of server processing transactions
+(represents the time that client requests to the server for processing
+information and feedback to the client)</p> <h3 id="_3-8-5-test-tools-and-test-strategies"><a href="#_3-8-5-test-tools-and-test-strategies" class="header-anchor">#</a> <strong>3.8.5 Test tools and test strategies</strong></h3> <p>Test tool: apache-jmeter</p> <p>Test strategy:</p> <p>(1) Making payment requests for 5,000 bills from different principals.</p> <p>(2) The cluster deployment of the principal node and the top node was expanded
+by a factor of 1.</p> <h3 id="_3-8-6-test-results-of-strategy-1-are-as-follows"><a href="#_3-8-6-test-results-of-strategy-1-are-as-follows" class="header-anchor">#</a> <strong>3.8.6 Test results of Strategy 1 are as follows:</strong></h3> <table><thead><tr><th>indicators</th> <th>Test values</th></tr></thead> <tbody><tr><td>The pressure test time</td> <td>20 points and 10 seconds</td></tr> <tr><td>concurrency</td> <td>100 threads (equivalent to 100 virtual users)</td></tr> <tr><td>Mean response time</td> <td>10556 milliseconds</td></tr> <tr><td>Maximum response time</td> <td>41595 milliseconds</td></tr> <tr><td>throughput</td> <td>3542.3 / SEC</td></tr> <tr><td>Fault tolerance rate</td> <td>0.01%</td></tr></tbody></table> <h3 id="_3-8-7-test-results-of-strategy-2-are-as-follows"><a href="#_3-8-7-test-results-of-strategy-2-are-as-follows" class="header-anchor">#</a> <strong>3.8.7 Test results of Strategy 2 are as follows:</strong></h3> <table><thead><tr><th>indicators</th> <th>Test values</th></tr></thead> <tbody><tr><td>The pressure test time</td> <td>20 points and 10 seconds</td></tr> <tr><td>concurrency</td> <td>100 threads (equivalent to 100 virtual users)</td></tr> <tr><td>Mean response time</td> <td>6040 milliseconds</td></tr> <tr><td>Maximum response time</td> <td>8907 milliseconds</td></tr> <tr><td>throughput</td> <td>5000/sec</td></tr> <tr><td>Fault tolerance rate</td> <td>0.01%</td></tr></tbody></table> <h3 id="conclusion-3-8-8"><a href="#conclusion-3-8-8" class="header-anchor">#</a> <strong>Conclusion 3.8.8</strong></h3> <p>The throughput of the blockchain system based on GC algorithm can be expanded
+horizontally.</p> <p>Applications on a single node can be clustered. The higher the number of
+clusters, the higher the TPS value.</p> <h3 id="chapter-4-summary-and-prospect"><a href="#chapter-4-summary-and-prospect" class="header-anchor">#</a> <strong>Chapter 4 summary and prospect</strong></h3> <p>  Taking GC consensus algorithm as the theoretical basis for the design of the
+chain block system, she is to pass around the user's payment, pay to build chain
+data, thus mapping out the chain of responsibility, GC block chain of the whole
+system of arbitration and the accountability mechanism to ensure the
+traceability of solution of the data, do not tamper with the characteristics of
+such a design pattern is in conformity with the production rules, value to
+drive, community of roles involved in the system as a whole, different
+liability, respectively, in the aspect of software solutions for coupling, the
+overall consensus forming uniform rules, and make the system capacity is not
+limited to the function of each node implementations can cluster deployment, In
+the field of pay, to pay extremely high efficiency and safety requirements, the
+currency of the consensus characteristic determines the only within multiple
+branches accepted the transaction can be considered to be effective, but the
+time need more than 10 minutes, so in daily life slow trading is not recognized,
+this alone determines the COINS to be money, can't build request response
+results of the upper application in 10 minutes, and resource oriented
+architecture will be eliminated, unable to become mainstream, GC consensus
+algorithm on the chain of responsibility as a security data not been tampered
+with, in line with the rate of production rules, its capacity can be associated
+with hardware optimization.Not limited to the consensus itself. But GC consensus
+algorithm in not registered in the system completely reliable relies on the
+execution of the aggregation algorithm, but the aggregation algorithm
+implementation of frequency is limited by the single node hardware and software
+environment, the higher the frequency of execution means that the higher the
+system load, when the load is limited by hardware, will not be able to achieve
+high throughput, high-performance aggregated data in GC2.0 version can revolve
+around this problem, the study, improve production efficiency of GC chain.</p> <p>reference</p> <ol><li><p>Zhang Liucheng, Zhang Li, Yang Weizhi. Overview of Blockchain Technology
+Research and Application Research [J]. Business Economics, 2018(4):170-171.</p></li> <li><p>I. Blake, G. Seroussi, and N. Smart, editors, Advances in Elliptic Curve
+Cryptography, London Mathematical Society 317, Cambridge University Press,
+2005.</p></li> <li><p><a href="https://kns.cnki.net/kcms/detail/detail.aspx?filename=JRDZ201809009&amp;dbcode=CJFQ&amp;dbname=CJFD2018&amp;v=" target="_blank" rel="noopener noreferrer">Analysis on the Status Quo and Trend of Blockchain Technology [J]. Di Gang.
+Financial Electronic.
+2018(09)<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></li> <li><p><a href="https://kns.cnki.net/kcms/detail/detail.aspx?filename=MOTO201604001&amp;dbcode=CJFQ&amp;dbname=CJFD2016&amp;v=" target="_blank" rel="noopener noreferrer">Development Status and Prospect of Blockchain Technology [J]. Acta
+Automatica Sinica.
+2016(04)<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></li> <li><p><a href="https://kns.cnki.net/kcms/detail/detail.aspx?filename=SJES671E2326FECF173315BD2D261C2789B6&amp;dbcode=SJES" target="_blank" rel="noopener noreferrer">A Survey on Security of Blockchain Systems [J]. Xiapu Luo, Peng Jiang,Ting
+Chen, Qiaoyan Wen.
+2017<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></li></ol> <h2 id="to-thank"><a href="#to-thank" class="header-anchor">#</a> To thank</h2> <p>  This paper is completed under the careful guidance of Professor Zheng Qiumei.I
+benefited a lot from Professor Zheng Qiumei's strict attitude towards academic
+research. She added color to the paper through her profound knowledge and made
+me complete a neat and rigorous paper.</p> <p>Supervisor: Zheng Qiumei Title: Professor Employer: China University of
+Petroleum</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><!----> <span class="next"><a href="/study/gc/About.html">
+        🍧 数据库1
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.40663826.js" defer></script><script src="/assets/js/2.8ca39476.js" defer></script><script src="/assets/js/22.4c01196f.js" defer></script>
+  </body>
+</html>
