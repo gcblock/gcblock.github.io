@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>🍉 flame | GC Consensus algorithm</title>
+    <meta name="generator" content="VuePress 1.8.0">
+    
+    <meta name="description" content="GC consensus algorithm is evolved from the social behavior of entrustment and guarantee. It aims to provide a secure and efficient blockchain technology architecture.">
+    
+    <link rel="preload" href="/assets/css/0.styles.947829bd.css" as="style"><link rel="preload" href="/assets/js/app.62d5d53d.js" as="script"><link rel="preload" href="/assets/js/2.a7926616.js" as="script"><link rel="preload" href="/assets/js/33.7dc2c70e.js" as="script"><link rel="prefetch" href="/assets/js/10.adff42cc.js"><link rel="prefetch" href="/assets/js/11.2fb73105.js"><link rel="prefetch" href="/assets/js/12.7eb0dd62.js"><link rel="prefetch" href="/assets/js/13.0b22c60b.js"><link rel="prefetch" href="/assets/js/14.f82a681f.js"><link rel="prefetch" href="/assets/js/15.a694c310.js"><link rel="prefetch" href="/assets/js/16.c1fc9c48.js"><link rel="prefetch" href="/assets/js/17.7db7c7bd.js"><link rel="prefetch" href="/assets/js/18.cd45c094.js"><link rel="prefetch" href="/assets/js/19.e511804f.js"><link rel="prefetch" href="/assets/js/20.b79067ed.js"><link rel="prefetch" href="/assets/js/21.9bf68bf9.js"><link rel="prefetch" href="/assets/js/22.f33ec737.js"><link rel="prefetch" href="/assets/js/23.9ac3468e.js"><link rel="prefetch" href="/assets/js/24.786b0a91.js"><link rel="prefetch" href="/assets/js/25.12bd86b8.js"><link rel="prefetch" href="/assets/js/26.11bb37b4.js"><link rel="prefetch" href="/assets/js/27.72caad04.js"><link rel="prefetch" href="/assets/js/28.ea715cc0.js"><link rel="prefetch" href="/assets/js/29.ce73c091.js"><link rel="prefetch" href="/assets/js/3.543d758f.js"><link rel="prefetch" href="/assets/js/30.7c7eec61.js"><link rel="prefetch" href="/assets/js/31.ad8c3ea9.js"><link rel="prefetch" href="/assets/js/32.2a637117.js"><link rel="prefetch" href="/assets/js/34.3c82ead2.js"><link rel="prefetch" href="/assets/js/35.a760d9ad.js"><link rel="prefetch" href="/assets/js/36.44cc4771.js"><link rel="prefetch" href="/assets/js/37.11d2b37b.js"><link rel="prefetch" href="/assets/js/38.30377a6e.js"><link rel="prefetch" href="/assets/js/39.dfbdc240.js"><link rel="prefetch" href="/assets/js/4.e342e4fd.js"><link rel="prefetch" href="/assets/js/40.dee94e03.js"><link rel="prefetch" href="/assets/js/41.22d54114.js"><link rel="prefetch" href="/assets/js/42.e1751d94.js"><link rel="prefetch" href="/assets/js/43.80a6373a.js"><link rel="prefetch" href="/assets/js/44.ec6aefa9.js"><link rel="prefetch" href="/assets/js/45.32656850.js"><link rel="prefetch" href="/assets/js/46.46466031.js"><link rel="prefetch" href="/assets/js/47.6ba1b419.js"><link rel="prefetch" href="/assets/js/48.48334742.js"><link rel="prefetch" href="/assets/js/49.a61e7817.js"><link rel="prefetch" href="/assets/js/5.7c7b592d.js"><link rel="prefetch" href="/assets/js/50.1c962be7.js"><link rel="prefetch" href="/assets/js/51.c06c6095.js"><link rel="prefetch" href="/assets/js/52.b0143932.js"><link rel="prefetch" href="/assets/js/53.3bc9d3ec.js"><link rel="prefetch" href="/assets/js/54.63b0ae6d.js"><link rel="prefetch" href="/assets/js/55.ace7b495.js"><link rel="prefetch" href="/assets/js/56.1c273a0c.js"><link rel="prefetch" href="/assets/js/57.bc4e58c6.js"><link rel="prefetch" href="/assets/js/58.89cb8772.js"><link rel="prefetch" href="/assets/js/59.1e505deb.js"><link rel="prefetch" href="/assets/js/6.1464f42f.js"><link rel="prefetch" href="/assets/js/60.016f4ca3.js"><link rel="prefetch" href="/assets/js/61.c66d82d5.js"><link rel="prefetch" href="/assets/js/62.afc72408.js"><link rel="prefetch" href="/assets/js/63.ab131d13.js"><link rel="prefetch" href="/assets/js/64.4d8fdb3f.js"><link rel="prefetch" href="/assets/js/65.f526af32.js"><link rel="prefetch" href="/assets/js/66.3c7bef03.js"><link rel="prefetch" href="/assets/js/7.56c454e2.js"><link rel="prefetch" href="/assets/js/8.d82ad732.js"><link rel="prefetch" href="/assets/js/9.d30ebe10.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.947829bd.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">GC Consensus algorithm</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="study" class="dropdown-title"><span class="title">study</span> <span class="arrow down"></span></button> <button type="button" aria-label="study" class="mobile-dropdown-title"><span class="title">study</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/study/blockchain/" class="nav-link">
+  blockchain
+</a></li><li class="dropdown-item"><!----> <a href="/study/gc/" class="nav-link">
+  GC Consensus algorithm
+</a></li><li class="dropdown-item"><!----> <a href="/study/aMeta/" class="nav-link">
+  Design of metadata system
+</a></li><li class="dropdown-item"><!----> <a href="/study/to/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  Torch order
+</a></li></ul></div></div><div class="nav-item"><a href="/team/" class="nav-link">
+  team
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Select language" class="dropdown-title"><span class="title">Languages</span> <span class="arrow down"></span></button> <button type="button" aria-label="Select language" class="mobile-dropdown-title"><span class="title">Languages</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/study/to/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  English
+</a></li><li class="dropdown-item"><!----> <a href="/zh/study/to/" class="nav-link">
+  简体中文
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="study" class="dropdown-title"><span class="title">study</span> <span class="arrow down"></span></button> <button type="button" aria-label="study" class="mobile-dropdown-title"><span class="title">study</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/study/blockchain/" class="nav-link">
+  blockchain
+</a></li><li class="dropdown-item"><!----> <a href="/study/gc/" class="nav-link">
+  GC Consensus algorithm
+</a></li><li class="dropdown-item"><!----> <a href="/study/aMeta/" class="nav-link">
+  Design of metadata system
+</a></li><li class="dropdown-item"><!----> <a href="/study/to/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  Torch order
+</a></li></ul></div></div><div class="nav-item"><a href="/team/" class="nav-link">
+  team
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Select language" class="dropdown-title"><span class="title">Languages</span> <span class="arrow down"></span></button> <button type="button" aria-label="Select language" class="mobile-dropdown-title"><span class="title">Languages</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/study/to/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  English
+</a></li><li class="dropdown-item"><!----> <a href="/zh/study/to/" class="nav-link">
+  简体中文
+</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Torch order</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/study/to/" aria-current="page" class="active sidebar-link">🍉 flame</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/study/to/#introduction" class="sidebar-link">🔖 introduction</a></li><li class="sidebar-sub-header"><a href="/study/to/#digital-operating-units" class="sidebar-link">Digital operating units</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/study/to/#overview-of-the-digital-approach" class="sidebar-link">Overview of the Digital Approach</a></li><li class="sidebar-sub-header"><a href="/study/to/#equity" class="sidebar-link">equity</a></li><li class="sidebar-sub-header"><a href="/study/to/#equity-2" class="sidebar-link">equity</a></li></ul></li><li class="sidebar-sub-header"><a href="/study/to/#patent-policy" class="sidebar-link">🔖 Patent Policy</a></li><li class="sidebar-sub-header"><a href="/study/to/#general-manager-s-rights" class="sidebar-link">General manager's rights</a></li><li class="sidebar-sub-header"><a href="/study/to/#an-outline" class="sidebar-link">🔖 an outline</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/study/to/#equivalent-guarantee" class="sidebar-link">Equivalent guarantee</a></li><li class="sidebar-sub-header"><a href="/study/to/#blockchain-certification" class="sidebar-link">Blockchain Certification</a></li></ul></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="flame"><a href="#flame" class="header-anchor">#</a> 🍉 flame</h1> <p>Zhonglian Shangan Investment Management Co., Ltd. is the first company that
+inherits the holy fire order to realize the nationwide company. The primary goal
+is to use block chain technology to realize guiding capital to give full play to
+its value and reasonable distribution of wealth, so that the world capital can
+focus on people's livelihood and science. The flame is a tool of human society,
+and today the flame has carried the good will of human beings. Today, we pave
+the way for human beings through block chain tools, eliminate the law of 20 to
+80, and achieve reasonable distribution of wealth, hence the name of the sacred
+fire order.</p> <h2 id="introduction"><a href="#introduction" class="header-anchor">#</a> 🔖 introduction</h2> <p>The siphon effect and tunnel effect of capital make wealth distributed unevenly
+and the competitive environment is not fair. The 80-20 law that emerges from
+this not only kills the passion of migrant workers, but also seriously injuring
+a group of young people who have the courage to start a business and have
+dreams. So how do you solve this problem? The state is suitable for
+macro-control and providing a fair and free market environment, but it is not
+suitable for direct participation in market operation, which will diminish the
+initiative of entrepreneurs and discourage the passion of the market. Therefore,
+the state can only play a role at the macro-level. The answer to solve this
+problem in detail is to use blockchain technology to construct an open,
+transparent and corruption-free environment, use the sacred fire order to guide
+capital, give value to the capital of the upper class, bring production passion
+to the bottom solution, gradually eliminate the class gap, and increase the
+productivity of the whole society by several times.</p> <p>Torch order is the consensus of the people, from the livelihood of the people's
+interests of the solution, so as long as the conditions of any individual or
+organization can inherit the Torch order, Zhonglian Shangan Investment
+Management Co., Ltd. without profit to provide technical support.</p> <h2 id="digital-operating-units"><a href="#digital-operating-units" class="header-anchor">#</a> Digital operating units</h2> <p>Blockchain technology can solve the problems of cheating and corruption, so it
+is necessary for digital operating units to provide a fair and non-supervisory
+investment operating environment.</p> <h3 id="overview-of-the-digital-approach"><a href="#overview-of-the-digital-approach" class="header-anchor">#</a> Overview of the Digital Approach</h3> <p>The 100% quantified equity of the company is the gold custody contract. The
+assets marked in the contract are gold, and the basic unit is G, that is, one
+share is equal to 1 G gold. Shareholders can freely choose to enter or withdraw
+the share capital through the block chain system. Shareholder rights are 100%
+based on blockchain system custody. The quantified digital assets include share
+capital, power, public welfare, namely holding gold custody contract is unit
+shareholder.</p> <h3 id="equity"><a href="#equity" class="header-anchor">#</a> equity</h3> <p>Capital stock is the condition for investors to enter, and the basic investment
+unit is gold G. Gold is chosen not only because it has thousands of years of
+circulation history and wide acceptance, but also because it can ensure
+investors' property is not disturbed by the off-site environment to the greatest
+extent, so that investors can advance and retreat in any environment at any
+time.</p> <h3 id="equity-2"><a href="#equity-2" class="header-anchor">#</a> equity</h3> <p>Shareholder rights are divided into dividends and voting rights. In order to
+support the financing development of the company, except for the privilege
+dividend part, the remaining rights of each shareholder are equal.</p> <h4 id="privilege-dividend"><a href="#privilege-dividend" class="header-anchor">#</a> ⭐️ privilege dividend</h4> <p>In order to finance the development of the unit and encourage the upper class to
+rush in, the company stipulates the privilege dividend method. The longest time
+of the privilege dividend is not more than 9 years, and it cannot be renewed for
+longer than that time. It is converted into the share dividend, and the access
+conditions are decided by the leadership of the unit.</p> <h4 id="uni-share-dividend"><a href="#uni-share-dividend" class="header-anchor">#</a> ⭐️ Uni-share Dividend</h4> <p>Subtract the share of the dividend in the privileged shares, the remaining
+dividend is divided equally among the shareholders.</p> <h4 id="share-share-vote"><a href="#share-share-vote" class="header-anchor">#</a> ⭐️ Share Share Vote</h4> <p>No matter how many gold custody contracts each shareholder holds, its voting
+power is the same, that is, equal voting. The results of the vote are generated
+through the blockchain, which is a blockchain developed using the blockchain
+consensus algorithm and is the blockchain for the storage of the gold custody
+contract.</p> <h4 id="angel-investing-uses-a-privileged-dividend-scheme"><a href="#angel-investing-uses-a-privileged-dividend-scheme" class="header-anchor">#</a> ⭐️ Angel investing uses a privileged dividend scheme</h4> <p>In order to better financing development, when the consortium in the way of
+financing to enter the privileged dividend power, the privileged shares enjoy
+the number of contracts held by the score of red.</p> <h4 id="vip-treatment"><a href="#vip-treatment" class="header-anchor">#</a> ⭐️ VIP treatment</h4> <p>Company shareholders enjoy VIP treatment when enjoying company resources. The
+formulation of VIP rules is determined by the equal-rights shareholders voting
+through the block consensus chain. In the event of productivity spillover or
+natural disaster, VIP treatment can make shareholders reach a consensus on the
+allocation of resources, and ultimately provide benefits for shareholders or
+reasonably allocate resources.On the other hand, in the normal development
+planning of the company, VIP treatment can play an incentive role in the
+development of the company.</p> <h2 id="patent-policy"><a href="#patent-policy" class="header-anchor">#</a> 🔖 Patent Policy</h2> <p>An open patent policy can truly provide benefits to inventors, rather than make
+a patent a capitalist windfall weight.</p> <p>There is no monopoly in the patents generated by the company, and there is a
+unified calculation rule: patent contributors enjoy 20% of the annual total
+profits as economic income, and the period of enjoyment is judged by the legal
+patent agency.There are no other rights.</p> <h2 id="general-manager-s-rights"><a href="#general-manager-s-rights" class="header-anchor">#</a> General manager's rights</h2> <p>The general manager is the highest position of the company, with the power of
+personnel appointment and removal, investment and operation.</p> <p>The general manager is appointed and removed at the annual general meeting of
+shareholders. When the contract holder believes that the general manager's
+behavior is harmful to the company, he or she can limit or remove the general
+manager's rights through blockchain voting.</p> <p>When the general manager's operating activities invoke funds that exceed 30% of
+the company's total assets, it is necessary to raise the block chain for 3 days
+to vote. When the negative votes exceed 1%, the voting time is extended by 12
+days.The final decision is whether the yes vote outweighs the no vote.</p> <h2 id="an-outline"><a href="#an-outline" class="header-anchor">#</a> 🔖 an outline</h2> <p>In order to ensure the interests of investors, the following conditions must be
+met:</p> <h3 id="equivalent-guarantee"><a href="#equivalent-guarantee" class="header-anchor">#</a> Equivalent guarantee</h3> <p>There is a risk of failure in the operation of the company, and a qualified
+guarantor must pay the bill in case of failure of the operation of the company
+and damage to the capital stock. That is, how much equity the operating unit has
+and how much of the secured assets must be pledged in the bank.</p> <h3 id="blockchain-certification"><a href="#blockchain-certification" class="header-anchor">#</a> Blockchain Certification</h3> <p>Flame that is based on block chain technology to build without the supervision
+of the investment company's operating environment, the project involving the
+interests of the shareholders must be digital authentication technology, ensure
+to use the technology of true loophole, requires authentication module has in
+particular, a shareholder vote module, welfare module, profits measurement
+module, the module of share out bonus in public, tax module, external investment
+module.</p> <p>At present, we provide certification units such as Zhonglian Commercial Security
+Investment Management Co., Ltd., Zhonglian Consensus Network Technology Co.,
+Ltd., and later certification units increased by GC chain voting.</p></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.62d5d53d.js" defer></script><script src="/assets/js/2.a7926616.js" defer></script><script src="/assets/js/33.7dc2c70e.js" defer></script>
+  </body>
+</html>

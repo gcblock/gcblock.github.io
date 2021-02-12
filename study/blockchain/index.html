@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Watermelon: block chain | GC Consensus algorithm</title>
+    <meta name="generator" content="VuePress 1.8.0">
+    
+    <meta name="description" content="GC consensus algorithm is evolved from the social behavior of entrustment and guarantee. It aims to provide a secure and efficient blockchain technology architecture.">
+    
+    <link rel="preload" href="/assets/css/0.styles.947829bd.css" as="style"><link rel="preload" href="/assets/js/app.62d5d53d.js" as="script"><link rel="preload" href="/assets/js/2.a7926616.js" as="script"><link rel="preload" href="/assets/js/19.e511804f.js" as="script"><link rel="prefetch" href="/assets/js/10.adff42cc.js"><link rel="prefetch" href="/assets/js/11.2fb73105.js"><link rel="prefetch" href="/assets/js/12.7eb0dd62.js"><link rel="prefetch" href="/assets/js/13.0b22c60b.js"><link rel="prefetch" href="/assets/js/14.f82a681f.js"><link rel="prefetch" href="/assets/js/15.a694c310.js"><link rel="prefetch" href="/assets/js/16.c1fc9c48.js"><link rel="prefetch" href="/assets/js/17.7db7c7bd.js"><link rel="prefetch" href="/assets/js/18.cd45c094.js"><link rel="prefetch" href="/assets/js/20.b79067ed.js"><link rel="prefetch" href="/assets/js/21.9bf68bf9.js"><link rel="prefetch" href="/assets/js/22.f33ec737.js"><link rel="prefetch" href="/assets/js/23.9ac3468e.js"><link rel="prefetch" href="/assets/js/24.786b0a91.js"><link rel="prefetch" href="/assets/js/25.12bd86b8.js"><link rel="prefetch" href="/assets/js/26.11bb37b4.js"><link rel="prefetch" href="/assets/js/27.72caad04.js"><link rel="prefetch" href="/assets/js/28.ea715cc0.js"><link rel="prefetch" href="/assets/js/29.ce73c091.js"><link rel="prefetch" href="/assets/js/3.543d758f.js"><link rel="prefetch" href="/assets/js/30.7c7eec61.js"><link rel="prefetch" href="/assets/js/31.ad8c3ea9.js"><link rel="prefetch" href="/assets/js/32.2a637117.js"><link rel="prefetch" href="/assets/js/33.7dc2c70e.js"><link rel="prefetch" href="/assets/js/34.3c82ead2.js"><link rel="prefetch" href="/assets/js/35.a760d9ad.js"><link rel="prefetch" href="/assets/js/36.44cc4771.js"><link rel="prefetch" href="/assets/js/37.11d2b37b.js"><link rel="prefetch" href="/assets/js/38.30377a6e.js"><link rel="prefetch" href="/assets/js/39.dfbdc240.js"><link rel="prefetch" href="/assets/js/4.e342e4fd.js"><link rel="prefetch" href="/assets/js/40.dee94e03.js"><link rel="prefetch" href="/assets/js/41.22d54114.js"><link rel="prefetch" href="/assets/js/42.e1751d94.js"><link rel="prefetch" href="/assets/js/43.80a6373a.js"><link rel="prefetch" href="/assets/js/44.ec6aefa9.js"><link rel="prefetch" href="/assets/js/45.32656850.js"><link rel="prefetch" href="/assets/js/46.46466031.js"><link rel="prefetch" href="/assets/js/47.6ba1b419.js"><link rel="prefetch" href="/assets/js/48.48334742.js"><link rel="prefetch" href="/assets/js/49.a61e7817.js"><link rel="prefetch" href="/assets/js/5.7c7b592d.js"><link rel="prefetch" href="/assets/js/50.1c962be7.js"><link rel="prefetch" href="/assets/js/51.c06c6095.js"><link rel="prefetch" href="/assets/js/52.b0143932.js"><link rel="prefetch" href="/assets/js/53.3bc9d3ec.js"><link rel="prefetch" href="/assets/js/54.63b0ae6d.js"><link rel="prefetch" href="/assets/js/55.ace7b495.js"><link rel="prefetch" href="/assets/js/56.1c273a0c.js"><link rel="prefetch" href="/assets/js/57.bc4e58c6.js"><link rel="prefetch" href="/assets/js/58.89cb8772.js"><link rel="prefetch" href="/assets/js/59.1e505deb.js"><link rel="prefetch" href="/assets/js/6.1464f42f.js"><link rel="prefetch" href="/assets/js/60.016f4ca3.js"><link rel="prefetch" href="/assets/js/61.c66d82d5.js"><link rel="prefetch" href="/assets/js/62.afc72408.js"><link rel="prefetch" href="/assets/js/63.ab131d13.js"><link rel="prefetch" href="/assets/js/64.4d8fdb3f.js"><link rel="prefetch" href="/assets/js/65.f526af32.js"><link rel="prefetch" href="/assets/js/66.3c7bef03.js"><link rel="prefetch" href="/assets/js/7.56c454e2.js"><link rel="prefetch" href="/assets/js/8.d82ad732.js"><link rel="prefetch" href="/assets/js/9.d30ebe10.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.947829bd.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">GC Consensus algorithm</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="study" class="dropdown-title"><span class="title">study</span> <span class="arrow down"></span></button> <button type="button" aria-label="study" class="mobile-dropdown-title"><span class="title">study</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/study/blockchain/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  blockchain
+</a></li><li class="dropdown-item"><!----> <a href="/study/gc/" class="nav-link">
+  GC Consensus algorithm
+</a></li><li class="dropdown-item"><!----> <a href="/study/aMeta/" class="nav-link">
+  Design of metadata system
+</a></li><li class="dropdown-item"><!----> <a href="/study/to/" class="nav-link">
+  Torch order
+</a></li></ul></div></div><div class="nav-item"><a href="/team/" class="nav-link">
+  team
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Select language" class="dropdown-title"><span class="title">Languages</span> <span class="arrow down"></span></button> <button type="button" aria-label="Select language" class="mobile-dropdown-title"><span class="title">Languages</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/study/blockchain/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  English
+</a></li><li class="dropdown-item"><!----> <a href="/zh/study/blockchain/" class="nav-link">
+  简体中文
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="study" class="dropdown-title"><span class="title">study</span> <span class="arrow down"></span></button> <button type="button" aria-label="study" class="mobile-dropdown-title"><span class="title">study</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/study/blockchain/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  blockchain
+</a></li><li class="dropdown-item"><!----> <a href="/study/gc/" class="nav-link">
+  GC Consensus algorithm
+</a></li><li class="dropdown-item"><!----> <a href="/study/aMeta/" class="nav-link">
+  Design of metadata system
+</a></li><li class="dropdown-item"><!----> <a href="/study/to/" class="nav-link">
+  Torch order
+</a></li></ul></div></div><div class="nav-item"><a href="/team/" class="nav-link">
+  team
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Select language" class="dropdown-title"><span class="title">Languages</span> <span class="arrow down"></span></button> <button type="button" aria-label="Select language" class="mobile-dropdown-title"><span class="title">Languages</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/study/blockchain/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  English
+</a></li><li class="dropdown-item"><!----> <a href="/zh/study/blockchain/" class="nav-link">
+  简体中文
+</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>blockchain</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/study/blockchain/" aria-current="page" class="active sidebar-link">Watermelon: block chain</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/study/blockchain/#the-introduction" class="sidebar-link">The introduction</a></li><li class="sidebar-sub-header"><a href="/study/blockchain/#blockchain-and-consensus-algorithms" class="sidebar-link">Blockchain and consensus algorithms</a></li><li class="sidebar-sub-header"><a href="/study/blockchain/#blockchain-technology-application-scenarios" class="sidebar-link">Blockchain technology application scenarios</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="watermelon-block-chain"><a href="#watermelon-block-chain" class="header-anchor">#</a> Watermelon: block chain</h1> <h2 id="the-introduction"><a href="#the-introduction" class="header-anchor">#</a> The introduction</h2> <p>Blockchain is a term used in information
+technology.In essence, it is a
+shared database, the data or information stored in it, has the characteristics
+of &quot;non-forgeable&quot;, &quot;whole-process trace&quot;, &quot;traceable&quot;, &quot;open and transparent&quot;,
+&quot;collective maintenance&quot;, etc.Based on these characteristics, blockchain
+technology has laid a solid foundation of &quot;trust&quot; and created a reliable
+mechanism of &quot;cooperation&quot;, which has a broad application
+prospect.</p> <p>On January 10, 2019, the Cyberspace Administration of China released the
+&quot;Blockchain Information Service Management Regulations&quot;
+[1]On October 24, 2019, in the 18th group study of the Political Bureau of the CPC
+Central Committee, General Secretary Xi Jinping stressed that &quot;blockchain is an
+important breakthrough in the independent innovation of core technology&quot; and &quot;to
+accelerate the innovation and development of blockchain technology and
+industry&quot;.&quot;Blockchain&quot; has entered the public vision and become the focus of
+social attention.</p> <p>On Dec 2, 2019, the word was selected as one of the top 10 buzzwords of 2019 by
+Yaowen Qiaozi. ---- excerpted from Baidu Baike</p> <h2 id="blockchain-and-consensus-algorithms"><a href="#blockchain-and-consensus-algorithms" class="header-anchor">#</a> Blockchain and consensus algorithms</h2> <p>Consensus algorithm can be seen to realize the core algorithm of blockchain
+technology. The core properties of blockchain are non-forgeable, whole-process
+trace, traceable (query), open and transparent, and collective maintenance are
+completed by &quot;consensus&quot;.How to do, big guy (distributed) terminal together
+negotiations to reach a common implementation of the articles of association
+(this is the origin of the consensus), the articles of association (algorithm)
+first data store open and transparent, anyone can query, someone tried to forge
+the big guy does not recognise the data, and banned, can even set the punishment
+mechanism. How to achieve the specific fairies have their own methods, such as
+PoW, PoS...Both have advantages and disadvantages.</p> <h4 id="heart-the-currency"><a href="#heart-the-currency" class="header-anchor">#</a> : heart: the currency</h4> <p>Bitcoin is based on a POW consensus algorithm. The name implies that the core
+properties of the blockchain are maintained through energy expends. Another is
+the belief that it is impossible for someone (the endpoint) to possess 51
+percent of the computing power to break the rules and cheat.In this full of the
+law of 20 80 world, I ha ha, full of a strong smell of capitalism.</p> <p>However, as the pioneer of blockchain technology, Bitcoin's historical
+significance cannot be denied, which is also the reason why many investors are
+crazy. So far, Bitcoin is close to the $50,000 mark.From the issue to the
+present increase ten million times. A close-up of the big characters, clothing!</p> <h2 id="blockchain-technology-application-scenarios"><a href="#blockchain-technology-application-scenarios" class="header-anchor">#</a> Blockchain technology application scenarios</h2> <p>Look forward to it.</p></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.62d5d53d.js" defer></script><script src="/assets/js/2.a7926616.js" defer></script><script src="/assets/js/19.e511804f.js" defer></script>
+  </body>
+</html>
